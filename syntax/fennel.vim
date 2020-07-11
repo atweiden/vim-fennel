@@ -109,7 +109,7 @@ delfunction s:syntax_keyword
 "   * Must not contain any reader metacharacters except for ' and #
 syntax match fennelKeyword "\v<:{1,2}%([^ \n\r\t()\[\]{}";@^`~\\%/]+/)*[^ \n\r\t()\[\]{}";@^`~\\%/]+:@<!>"
 
-syntax match fennelStringEscape "\v\\%([\\btnfr"]|u\x{4}|[0-3]\o{2}|\o{1,2})" contained
+syntax match fennelStringEscape "\v\\%([\\btnfrz"]|u\x{4}|[0-3]\o{2}|\o{1,2})" contained
 
 syntax region fennelString matchgroup=fennelStringDelimiter start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=fennelStringEscape,@Spell
 
