@@ -66,7 +66,13 @@ setlocal lispwords+=when,
 setlocal lispwords+=while,
 setlocal lispwords+=λ
 
-let b:undo_ftplugin = 'setlocal iskeyword< define< formatoptions< comments< commentstring< lispwords<'
+let b:undo_ftplugin = 'setlocal'
+let b:undo_ftplugin += ' comments<'
+let b:undo_ftplugin += ' commentstring<'
+let b:undo_ftplugin += ' define<'
+let b:undo_ftplugin += ' formatoptions<'
+let b:undo_ftplugin += ' iskeyword<'
+let b:undo_ftplugin += ' lispwords<'
 
 let b:did_ftplugin = 1
 
