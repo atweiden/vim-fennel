@@ -13,8 +13,7 @@ let s:fennel_syntax_keywords = {
     \ ,                "match"
     \ ,                "when"]
     \ , 'fennelConstant': ["nil"]
-    \ , 'fennelDefine': ["def"
-    \ ,                  "global"
+    \ , 'fennelDefine': ["global"
     \ ,                  "let"
     \ ,                  "local"
     \ ,                  "var"]
