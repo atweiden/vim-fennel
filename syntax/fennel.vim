@@ -190,7 +190,7 @@ highlight default link fennelFunc                      Function
 highlight default link fennelMacro                     Macro
 highlight default link fennelRepeat                    Repeat
 
-highlight default link fennelSpecial                   Special
+highlight default link fennelSpecial                   Statement
 highlight default link fennelVarArg                    Special
 highlight default link fennelQuote                     SpecialChar
 highlight default link fennelUnquote                   SpecialChar
