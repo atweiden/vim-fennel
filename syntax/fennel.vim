@@ -328,11 +328,11 @@ highlight default link fennelDefine                    Statement
 highlight default link fennelException                 Exception
 highlight default link fennelFunc                      Function
 highlight default link fennelComparator                Operator
-highlight default link fennelMacro                     Macro
+highlight default link fennelMacro                     Special
 highlight default link fennelRepeat                    Repeat
 
-highlight default link fennelSpecial                   Special
-highlight default link fennelAuxSyntax                 Special
+highlight default link fennelSpecial                   Macro
+highlight default link fennelAuxSyntax                 Macro
 highlight default link fennelQuote                     SpecialChar
 highlight default link fennelUnquote                   SpecialChar
 highlight default link fennelMeta                      SpecialChar
