@@ -1,7 +1,7 @@
 vim-fennel
 ==========
 
-[Fennel][Fennel] syntax highlighting for Vim
+[Fennel][Fennel] syntax highlighting for Vim.
 
 Description
 -----------
@@ -14,7 +14,7 @@ An opinionated conglomeration of current
 License
 -------
 
-[Vim][LICENSE].
+[Vim][LICENSE]
 
 
 [LICENSE]: LICENSE
