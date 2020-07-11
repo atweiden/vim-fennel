@@ -1,8 +1,3 @@
-" Vim syntax file
-" Language:     Fennel
-" Authors:      Adopted from syntax/clojure.vim
-" License:      Vim
-
 if exists("b:current_syntax")
   finish
 endif
