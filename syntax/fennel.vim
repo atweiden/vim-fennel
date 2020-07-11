@@ -72,9 +72,10 @@ let s:fennel_syntax_keywords = {
     \ ,                   "quote"
     \ ,                   "macros"
     \ ,                   "require-macros"]
-    \ , 'fennelException': ["assert"]
+    \ , 'fennelException': ["error"]
     \ , 'fennelLuaKeyword': ["_G"
     \ ,                      "_VERSION"
+    \ ,                      "assert"
     \ ,                      "collectgarbage"
     \ ,                      "coroutine"
     \ ,                      "coroutine.create"
@@ -102,7 +103,6 @@ let s:fennel_syntax_keywords = {
     \ ,                      "debug.upvalueid"
     \ ,                      "debug.upvaluejoin"
     \ ,                      "dofile"
-    \ ,                      "error"
     \ ,                      "getmetatable"
     \ ,                      "io"
     \ ,                      "io.close"
