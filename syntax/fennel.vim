@@ -52,7 +52,12 @@ let s:fennel_syntax_keywords = {
     \ ,                 "->>"
     \ ,                 "-?>"
     \ ,                 "-?>>"
-    \ ,                 "doto"]
+    \ ,                 "doto"
+    \ ,                 "pick-args"
+    \ ,                 "pick-values"
+    \ ,                 "macro"
+    \ ,                 "macrodebug"
+    \ ,                 "import-macros"]
     \ , 'fennelRepeat': ["each"
     \ ,                  "while"
     \ ,                  "for"]
