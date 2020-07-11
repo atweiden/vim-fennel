@@ -4,7 +4,7 @@
 " License:      Vim
 
 if exists("b:did_ftplugin")
-	finish
+  finish
 endif
 let b:did_ftplugin = 1
 
@@ -43,16 +43,16 @@ setlocal lispwords=when,partial,lambda,λ,do,fn,global,local,var,let,if,each,whi
 
 " Skip brackets in ignored syntax regions when using the % command
 if exists('loaded_matchit')
-	let b:match_words = &matchpairs
-	let b:match_skip = 's:comment\|string\|regex\|character'
-	let b:undo_ftplugin .= ' | unlet! b:match_words b:match_skip'
+  let b:match_words = &matchpairs
+  let b:match_skip = 's:comment\|string\|regex\|character'
+  let b:undo_ftplugin .= ' | unlet! b:match_words b:match_skip'
 endif
 
 " Win32 can filter files in the browse dialog
 if has("gui_win32") && !exists("b:browsefilter")
-	let b:browsefilter = "Fennel Source Files (*.fnl)\t*.fnl\n" .
-	                   \ "All Files (*.*)\t*.*\n"
-	let b:undo_ftplugin .= ' | unlet! b:browsefilter'
+  let b:browsefilter = "Fennel Source Files (*.fnl)\t*.fnl\n" .
+                     \ "All Files (*.*)\t*.*\n"
+  let b:undo_ftplugin .= ' | unlet! b:browsefilter'
 endif
 
 let &cpo = s:cpo_save

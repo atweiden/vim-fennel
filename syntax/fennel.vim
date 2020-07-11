@@ -4,14 +4,14 @@
 " License:      Vim
 
 if exists("b:current_syntax")
-	finish
+  finish
 endif
 
 let s:cpo_sav = &cpo
 set cpo&vim
 
 if has("folding") && exists("g:fennel_fold") && g:fennel_fold > 0
-	setlocal foldmethod=syntax
+  setlocal foldmethod=syntax
 endif
 
 " -*- KEYWORDS -*-
@@ -29,26 +29,26 @@ let s:fennel_syntax_keywords = {
     " \ , 'fennelException': []
 
 function! s:syntax_keyword(dict)
-	for key in keys(a:dict)
-		execute 'syntax keyword' key join(a:dict[key], ' ')
-	endfor
+  for key in keys(a:dict)
+    execute 'syntax keyword' key join(a:dict[key], ' ')
+  endfor
 endfunction
 
 if exists('b:fennel_syntax_without_core_keywords') && b:fennel_syntax_without_core_keywords
-	" Only match language specials and primitives
-	for s:key in ['fennelBoolean', 'fennelConstant', 'fennelException', 'fennelSpecial']
-		execute 'syntax keyword' s:key join(s:fennel_syntax_keywords[s:key], ' ')
-	endfor
+  " Only match language specials and primitives
+  for s:key in ['fennelBoolean', 'fennelConstant', 'fennelException', 'fennelSpecial']
+    execute 'syntax keyword' s:key join(s:fennel_syntax_keywords[s:key], ' ')
+  endfor
 else
-	call s:syntax_keyword(s:fennel_syntax_keywords)
+  call s:syntax_keyword(s:fennel_syntax_keywords)
 endif
 
 if exists('g:fennel_syntax_keywords')
-	call s:syntax_keyword(g:fennel_syntax_keywords)
+  call s:syntax_keyword(g:fennel_syntax_keywords)
 endif
 
 if exists('b:fennel_syntax_keywords')
-	call s:syntax_keyword(b:fennel_syntax_keywords)
+  call s:syntax_keyword(b:fennel_syntax_keywords)
 endif
 
 unlet! s:key
@@ -80,7 +80,7 @@ syntax match fennelSymbol "\v%([a-zA-Z!$&*_+=|<.>?-]|[^\x00-\x7F])+%(:?%([a-zA-Z
 
 let s:radix_chars = "0123456789abcdefghijklmnopqrstuvwxyz"
 for s:radix in range(2, 36)
-	execute 'syntax match fennelNumber "\v\c<[-+]?' . s:radix . 'r[' . strpart(s:radix_chars, 0, s:radix) . ']+>"'
+  execute 'syntax match fennelNumber "\v\c<[-+]?' . s:radix . 'r[' . strpart(s:radix_chars, 0, s:radix) . ']+>"'
 endfor
 unlet! s:radix_chars s:radix
 
