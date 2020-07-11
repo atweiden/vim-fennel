@@ -26,7 +26,6 @@ let s:fennel_syntax_keywords = {
     \ , 'fennelRelOp': ["and"
     \ ,                 "or"
     \ ,                 "not"
-    \ ,                 "~"
     \ ,                 ">"
     \ ,                 "<"
     \ ,                 ">="
