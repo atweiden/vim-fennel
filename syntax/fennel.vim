@@ -46,7 +46,8 @@ let s:fennel_syntax_keywords = {
     \ ,                "require-macros"
     \ ,                "macros"
     \ ,                "eval-compiler"
-    \ ,                "quote"]
+    \ ,                "quote"
+    \ ,                "comment"]
     \ , 'fennelMacro': ["->"
     \ ,                 "->>"
     \ ,                 "-?>"
