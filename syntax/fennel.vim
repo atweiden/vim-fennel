@@ -287,8 +287,6 @@ syntax match fennelAuxSyntax /\$\([1-9]\|\.\.\.\)\?/
 syntax keyword fennelAuxSyntax ... _ &
 " Pattern prefix `?foo` or guard syntax `(matched ? (pred matched)` used in `match`
 syntax match fennelAuxSyntax /\<?\ze\([^[:space:]\n"'(),;@\[\]\\`{}~]\|\>\)/ contained containedin=fennelSymbol
-" Special suffix for gensym in macro
-syntax match fennelAuxSyntax /[^[:space:]\n"'(),;@\[\]\\`{}~]\zs#\>/ contained containedin=fennelSymbol
 
 syntax match fennelQuote "'"
 syntax match fennelQuote "`"
