@@ -53,13 +53,6 @@ setlocal commentstring=;\ %s
 " -*- LISPWORDS -*-
 setlocal lispwords=when,partial,lambda,λ,do,fn,global,local,var,let,if,each,while,for,match
 
-" Skip brackets in ignored syntax regions when using the % command
-if exists('loaded_matchit')
-  let b:match_words = &matchpairs
-  let b:match_skip = 's:comment\|string\|regex\|character'
-  let b:undo_ftplugin .= ' | unlet! b:match_words b:match_skip'
-endif
-
 let b:undo_ftplugin = 'setlocal iskeyword< define< formatoptions< comments< commentstring< lispwords<'
 
 let b:did_ftplugin = 1
