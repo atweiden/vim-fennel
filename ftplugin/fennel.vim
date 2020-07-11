@@ -51,7 +51,22 @@ setlocal commentstring=;\ %s
 " specially and hence are not indented specially.
 "
 " -*- LISPWORDS -*-
-setlocal lispwords=when,partial,lambda,λ,do,fn,global,local,var,let,if,each,while,for,match
+setlocal lispwords=
+setlocal lispwords+=do,
+setlocal lispwords+=each,
+setlocal lispwords+=fn,
+setlocal lispwords+=for,
+setlocal lispwords+=global,
+setlocal lispwords+=if,
+setlocal lispwords+=lambda,
+setlocal lispwords+=let,
+setlocal lispwords+=local,
+setlocal lispwords+=match,
+setlocal lispwords+=partial,
+setlocal lispwords+=var,
+setlocal lispwords+=when,
+setlocal lispwords+=while,
+setlocal lispwords+=λ
 
 let b:undo_ftplugin = 'setlocal iskeyword< define< formatoptions< comments< commentstring< lispwords<'
 
