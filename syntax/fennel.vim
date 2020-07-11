@@ -15,16 +15,18 @@ let s:fennel_syntax_keywords = {
     \ ,                "match"
     \ ,                "when"]
     \ , 'fennelConstant': ["nil"]
-    \ , 'fennelDefine': ["global"
-    \ ,                  "let"
-    \ ,                  "local"
-    \ ,                  "var"
-    \ ,                  "fn"
-    \ ,                  "lambda"
-    \ ,                  "λ"
-    \ ,                  "set"
-    \ ,                  "set-forcibly!"
-    \ ,                  "tset"]
+    \ , 'fennelDefineFun': ["fn"
+    \ ,                     "lambda"
+    \ ,                     "λ"
+    \ ,                     "macro"
+    \ ,                     "quote"]
+    \ , 'fennelDefineVar': ["global"
+    \ ,                     "let"
+    \ ,                     "local"
+    \ ,                     "var"
+    \ ,                     "set"
+    \ ,                     "set-forcibly!"
+    \ ,                     "tset"]
     \ , 'fennelComparator': ["and"
     \ ,                      "or"
     \ ,                      "not"
@@ -54,7 +56,6 @@ let s:fennel_syntax_keywords = {
     \ ,                 "doto"
     \ ,                 "pick-args"
     \ ,                 "pick-values"
-    \ ,                 "macro"
     \ ,                 "macrodebug"
     \ ,                 "import-macros"]
     \ , 'fennelRepeat': ["each"
@@ -69,7 +70,6 @@ let s:fennel_syntax_keywords = {
     \ ,                   "doc"
     \ ,                   "lua"
     \ ,                   "eval-compiler"
-    \ ,                   "quote"
     \ ,                   "macros"
     \ ,                   "require-macros"]
     \ , 'fennelException': ["error"]
@@ -301,8 +301,8 @@ syntax match fennelComment ";.*$" contains=fennelCommentTodo,@Spell
 syntax match fennelComment "#!.*$"
 
 " -*- TOP CLUSTER -*-
-" syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelAuxSyntax,fennelVariable,fennelVector
-syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelAuxSyntax,fennelVector
+" syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefineVar,fennelDefineFun,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelAuxSyntax,fennelVariable,fennelVector
+syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefineVar,fennelDefineFun,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelAuxSyntax,fennelVector
 
 syntax region fennelSexp   matchgroup=fennelParen start="("  end=")" contains=@fennelTop
 syntax region fennelVector matchgroup=fennelParen start="\[" end="]" contains=@fennelTop
@@ -324,9 +324,10 @@ highlight default link fennelStringEscape              Character
 
 highlight default link fennelVariable                  Identifier
 highlight default link fennelCond                      Conditional
-highlight default link fennelDefine                    Statement
+highlight default link fennelDefineFun                 Keyword
+highlight default link fennelDefineVar                 Statement
 highlight default link fennelException                 Exception
-highlight default link fennelFunc                      Function
+highlight default link fennelFunc                      Statement
 highlight default link fennelComparator                Operator
 highlight default link fennelMacro                     Special
 highlight default link fennelRepeat                    Repeat
