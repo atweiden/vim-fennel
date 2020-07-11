@@ -53,6 +53,7 @@ setlocal commentstring=;\ %s
 " -*- LISPWORDS -*-
 setlocal lispwords=
 setlocal lispwords+=do,
+setlocal lispwords+=doto,
 setlocal lispwords+=each,
 setlocal lispwords+=fn,
 setlocal lispwords+=for,
@@ -61,6 +62,7 @@ setlocal lispwords+=if,
 setlocal lispwords+=lambda,
 setlocal lispwords+=let,
 setlocal lispwords+=local,
+setlocal lispwords+=macro,
 setlocal lispwords+=match,
 setlocal lispwords+=partial,
 setlocal lispwords+=var,
