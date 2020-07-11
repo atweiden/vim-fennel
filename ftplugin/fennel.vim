@@ -31,9 +31,6 @@ setlocal iskeyword=@,33,35-38,42-43,45-58,60-63,94-95,124
 " of user-defined def* definitions.
 setlocal define=\\v[(/]def(ault)@!\\S*
 
-" Remove 't' from 'formatoptions' to avoid auto-wrapping code.
-setlocal formatoptions-=t
-
 " Lisp comments are routinely nested (e.g. ;;; SECTION HEADING)
 setlocal comments=n:;
 setlocal commentstring=;\ %s
