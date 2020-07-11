@@ -1,7 +1,7 @@
 " Vim filetype plugin file
 " Language:     Fennel
 " Authors:      Adopted from ftplugin/clojure.vim
-" License:      Same as Vim
+" License:      Vim
 
 if exists("b:did_ftplugin")
 	finish

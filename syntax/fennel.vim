@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:     Fennel
 " Authors:      Adopted from syntax/clojure.vim
-" License:      Same as Vim
+" License:      Vim
 
 if exists("b:current_syntax")
 	finish
