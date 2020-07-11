@@ -23,6 +23,16 @@ let s:fennel_syntax_keywords = {
     \ ,                  "set"
     \ ,                  "set-forcibly!"
     \ ,                  "tset"]
+    \ , 'fennelRelOp': ["and"
+    \ ,                 "or"
+    \ ,                 "not"
+    \ ,                 "~"
+    \ ,                 ">"
+    \ ,                 "<"
+    \ ,                 ">="
+    \ ,                 "<="
+    \ ,                 "=="
+    \ ,                 "~="]
     \ , 'fennelFunc': ["."
     \ ,                ":"
     \ ,                "+"
@@ -33,16 +43,7 @@ let s:fennel_syntax_keywords = {
     \ ,                "%"
     \ ,                "/"
     \ ,                "//"
-    \ ,                "or"
-    \ ,                "and"
-    \ ,                ">"
-    \ ,                "<"
-    \ ,                ">="
-    \ ,                "<="
     \ ,                "="
-    \ ,                "=="
-    \ ,                "~="
-    \ ,                "not"
     \ ,                "length"
     \ ,                "#"]
     \ , 'fennelMacro': ["->"
@@ -298,8 +299,8 @@ syntax match fennelComment ";.*$" contains=fennelCommentTodo,@Spell
 syntax match fennelComment "#!.*$"
 
 " -*- TOP CLUSTER -*-
-" syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVariable,fennelVector
-syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelFunc,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVector
+" syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelRelOp,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVariable,fennelVector
+syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelFunc,fennelRelOp,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVector
 
 syntax region fennelSexp   matchgroup=fennelParen start="("  end=")" contains=@fennelTop
 syntax region fennelVector matchgroup=fennelParen start="\[" end="]" contains=@fennelTop
@@ -324,6 +325,7 @@ highlight default link fennelCond                      Conditional
 highlight default link fennelDefine                    Statement
 highlight default link fennelException                 Exception
 highlight default link fennelFunc                      Function
+highlight default link fennelRelOp                     Operator
 highlight default link fennelMacro                     Macro
 highlight default link fennelRepeat                    Repeat
 
