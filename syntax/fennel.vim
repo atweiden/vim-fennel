@@ -319,7 +319,7 @@ highlight default link fennelCharacter                 Character
 highlight default link fennelKeyword                   Keyword
 highlight default link fennelNumber                    Number
 highlight default link fennelString                    String
-highlight default link fennelStringDelimiter           Delimiter
+highlight default link fennelStringDelimiter           StorageClass
 highlight default link fennelStringEscape              Character
 
 highlight default link fennelVariable                  Identifier
