@@ -32,6 +32,7 @@ let s:fennel_syntax_keywords = {
     \ ,                 "<"
     \ ,                 ">="
     \ ,                 "<="
+    \ ,                 "="
     \ ,                 "=="
     \ ,                 "~="]
     \ , 'fennelFunc': ["."
@@ -44,7 +45,6 @@ let s:fennel_syntax_keywords = {
     \ ,                "%"
     \ ,                "/"
     \ ,                "//"
-    \ ,                "="
     \ ,                "length"
     \ ,                "#"]
     \ , 'fennelMacro': ["->"
