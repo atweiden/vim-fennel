@@ -57,7 +57,7 @@ let s:fennel_syntax_keywords = {
     \ , 'fennelSpecial': ["do"
     \ ,                   "fn"
     \ ,                   "partial"
-    \ ,                   "lamda"
+    \ ,                   "lambda"
     \ ,                   "λ"
     \ ,                   "require"
     \ ,                   "values"
