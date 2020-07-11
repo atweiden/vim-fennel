@@ -313,10 +313,10 @@ syntax match fennelError "]\|}\|)"
 
 syntax sync fromstart
 
-highlight default link fennelConstant                  Type
-highlight default link fennelBoolean                   Type
+highlight default link fennelConstant                  Boolean
+highlight default link fennelBoolean                   Boolean
 highlight default link fennelCharacter                 Character
-highlight default link fennelKeyword                   Boolean
+highlight default link fennelKeyword                   Constant
 highlight default link fennelNumber                    Number
 highlight default link fennelString                    String
 highlight default link fennelStringDelimiter           StorageClass
@@ -343,7 +343,7 @@ highlight default link fennelDispatch                  SpecialChar
 highlight default link fennelLuaKeyword                Function
 
 highlight default link fennelComment                   Comment
-highlight default link fennelCommentTodo               Constant
+highlight default link fennelCommentTodo               PreProc
 
 highlight default link fennelError                     Error
 
