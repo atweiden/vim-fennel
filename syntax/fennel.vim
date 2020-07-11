@@ -19,11 +19,11 @@ let s:fennel_syntax_keywords = {
     \ ,                  "var"
     \ ,                  "fn"
     \ ,                  "lambda"
-    \ ,                  "λ"]
+    \ ,                  "λ"
+    \ ,                  "set"
+    \ ,                  "set-forcibly!"
+    \ ,                  "tset"]
     \ , 'fennelFunc': ["."
-    \ ,                "set"
-    \ ,                "set-forcibly!"
-    \ ,                "tset"
     \ ,                ":"
     \ ,                "+"
     \ ,                ".."
