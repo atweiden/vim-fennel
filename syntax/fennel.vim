@@ -60,6 +60,7 @@ let s:fennel_syntax_keywords = {
     \ ,                   "partial"
     \ ,                   "lambda"
     \ ,                   "λ"
+    \ ,                   "hashfn"
     \ ,                   "require"
     \ ,                   "values"
     \ ,                   "lua"
