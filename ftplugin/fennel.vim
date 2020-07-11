@@ -5,7 +5,7 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
-setlocal iskeyword=@,33,35-38,42-43,45-58,60-63,94-95,124
+setlocal iskeyword=@,33,35-38,42-43,45-58,60-63,94-95,124,126
 " 32: SPACE
 " 34: "
 " 39: '
