@@ -42,11 +42,7 @@ let s:fennel_syntax_keywords = {
     \ ,                "~="
     \ ,                "not"
     \ ,                "length"
-    \ ,                "#"
-    \ ,                "require-macros"
-    \ ,                "macros"
-    \ ,                "eval-compiler"
-    \ ,                "quote"]
+    \ ,                "#"]
     \ , 'fennelMacro': ["->"
     \ ,                 "->>"
     \ ,                 "-?>"
@@ -67,18 +63,24 @@ let s:fennel_syntax_keywords = {
     \ ,                   "λ"
     \ ,                   "hashfn"
     \ ,                   "require"
+    \ ,                   "include"
     \ ,                   "values"
-    \ ,                   "lua"
     \ ,                   "assert"
     \ ,                   "comment"
+    \ ,                   "doc"
     \ ,                   "type"
     \ ,                   "pairs"
     \ ,                   "ipairs"
     \ ,                   "tostring"
     \ ,                   "tonumber"
     \ ,                   "unpack"
+    \ ,                   "getmetatable"
     \ ,                   "setmetatable"
-    \ ,                   "getmetatable"]
+    \ ,                   "lua"
+    \ ,                   "eval-compiler"
+    \ ,                   "quote"
+    \ ,                   "macros"
+    \ ,                   "require-macros"]
     \ }
     " \ , 'fennelVariable': []
     " \ , 'fennelException': []
