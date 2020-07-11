@@ -255,7 +255,9 @@ delfunction s:syntax_keyword
 "   * Must not end in a : or /
 "   * Must not have two adjacent colons except at the beginning
 "   * Must not contain any reader metacharacters except for ' and #
-syntax match fennelKeyword "\v<:{1,2}%([^ \n\r\t()\[\]{}";@^`~\\%/]+/)*[^ \n\r\t()\[\]{}";@^`~\\%/]+:@<!>"
+syntax match fennelKeywordLabel "\v<:{1,2}%([^ \n\r\t()\[\]{}";@^`~\\%/]+/)*[^ \n\r\t()\[\]{}";@^`~\\%/]+:@<!>" containedin=fennelKeyword
+
+syntax region fennelKeyword matchgroup=fennelKeywordDelimiter start=/\v<:/ end="\v\ze[ \n\r\t()[\]{}";@^`~\\%/]+" contains=fennelKeywordLabel display
 
 syntax match fennelStringEscape "\v\\%([\\btnfrz"]|u\x{4}|[0-3]\o{2}|\o{1,2})" contained
 
@@ -316,7 +318,8 @@ syntax sync fromstart
 highlight default link fennelConstant                  Boolean
 highlight default link fennelBoolean                   Boolean
 highlight default link fennelCharacter                 Character
-highlight default link fennelKeyword                   Structure
+highlight default link fennelKeyword                   String
+highlight default link fennelKeywordDelimiter          Number
 highlight default link fennelNumber                    Number
 highlight default link fennelString                    String
 highlight default link fennelStringDelimiter           StorageClass
