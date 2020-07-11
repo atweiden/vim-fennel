@@ -46,8 +46,7 @@ let s:fennel_syntax_keywords = {
     \ ,                "require-macros"
     \ ,                "macros"
     \ ,                "eval-compiler"
-    \ ,                "quote"
-    \ ,                "comment"]
+    \ ,                "quote"]
     \ , 'fennelMacro': ["->"
     \ ,                 "->>"
     \ ,                 "-?>"
@@ -71,6 +70,7 @@ let s:fennel_syntax_keywords = {
     \ ,                   "values"
     \ ,                   "lua"
     \ ,                   "assert"
+    \ ,                   "comment"
     \ ,                   "type"
     \ ,                   "pairs"
     \ ,                   "ipairs"
