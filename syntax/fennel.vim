@@ -316,7 +316,7 @@ syntax sync fromstart
 highlight default link fennelConstant                  Boolean
 highlight default link fennelBoolean                   Boolean
 highlight default link fennelCharacter                 Character
-highlight default link fennelKeyword                   Constant
+highlight default link fennelKeyword                   Structure
 highlight default link fennelNumber                    Number
 highlight default link fennelString                    String
 highlight default link fennelStringDelimiter           StorageClass
