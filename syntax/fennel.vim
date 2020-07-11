@@ -41,6 +41,7 @@ let s:fennel_syntax_keywords = {
     \ ,                "=="
     \ ,                "~="
     \ ,                "not"
+    \ ,                "length"
     \ ,                "#"
     \ ,                "require-macros"
     \ ,                "macros"
