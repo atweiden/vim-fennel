@@ -184,7 +184,7 @@ highlight default link fennelStringEscape              Character
 
 highlight default link fennelVariable                  Identifier
 highlight default link fennelCond                      Conditional
-highlight default link fennelDefine                    Define
+highlight default link fennelDefine                    Statement
 highlight default link fennelException                 Exception
 highlight default link fennelFunc                      Function
 highlight default link fennelMacro                     Macro
