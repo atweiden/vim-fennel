@@ -16,7 +16,10 @@ let s:fennel_syntax_keywords = {
     \ , 'fennelDefine': ["global"
     \ ,                  "let"
     \ ,                  "local"
-    \ ,                  "var"]
+    \ ,                  "var"
+    \ ,                  "fn"
+    \ ,                  "lambda"
+    \ ,                  "λ"]
     \ , 'fennelFunc': ["."
     \ ,                "set"
     \ ,                "set-forcibly!"
@@ -56,10 +59,7 @@ let s:fennel_syntax_keywords = {
     \ ,                  "while"
     \ ,                  "for"]
     \ , 'fennelSpecial': ["do"
-    \ ,                   "fn"
     \ ,                   "partial"
-    \ ,                   "lambda"
-    \ ,                   "λ"
     \ ,                   "hashfn"
     \ ,                   "require"
     \ ,                   "include"
