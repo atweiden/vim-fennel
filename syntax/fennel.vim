@@ -153,4 +153,4 @@ let b:current_syntax = "fennel"
 let &cpo = s:cpo_sav
 unlet! s:cpo_sav
 
-" vim:sts=8:sw=8:ts=8:noet
+" vim: set filetype=vim foldmethod=marker foldlevel=0 nowrap:

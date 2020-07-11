@@ -59,4 +59,4 @@ let &cpo = s:cpo_save
 
 unlet! s:cpo_save s:setting s:dir
 
-" vim:sts=8:sw=8:ts=8:noet
+" vim: set filetype=vim foldmethod=marker foldlevel=0 nowrap:
