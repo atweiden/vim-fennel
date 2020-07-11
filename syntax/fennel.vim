@@ -5,10 +5,6 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
-if has("folding") && exists("g:fennel_fold") && g:fennel_fold > 0
-  setlocal foldmethod=syntax
-endif
-
 " -*- KEYWORDS -*-
 let s:fennel_syntax_keywords = {
     \   'fennelBoolean': ["false","true"]
@@ -102,9 +98,9 @@ syntax match fennelComment "#!.*$"
 " syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVariable,fennelVector
 syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelFunc,fennelKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVector
 
-syntax region fennelSexp   matchgroup=fennelParen start="("  end=")" contains=@fennelTop fold
-syntax region fennelVector matchgroup=fennelParen start="\[" end="]" contains=@fennelTop fold
-syntax region fennelMap    matchgroup=fennelParen start="{"  end="}" contains=@fennelTop fold
+syntax region fennelSexp   matchgroup=fennelParen start="("  end=")" contains=@fennelTop
+syntax region fennelVector matchgroup=fennelParen start="\[" end="]" contains=@fennelTop
+syntax region fennelMap    matchgroup=fennelParen start="{"  end="}" contains=@fennelTop
 
 " Highlight superfluous closing parens, brackets and braces.
 syntax match fennelError "]\|}\|)"
