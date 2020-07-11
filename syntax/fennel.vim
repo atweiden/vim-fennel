@@ -283,7 +283,12 @@ syntax match fennelNumber "\v<[-+]?%(0\o*|0x\x+|[1-9]\d*)N?>"
 syntax match fennelNumber "\v<[-+]?%(0|[1-9]\d*|%(0|[1-9]\d*)\.\d*)%(M|[eE][-+]?\d+)?>"
 syntax match fennelNumber "\v<[-+]?%(0|[1-9]\d*)/%(0|[1-9]\d*)>"
 
-syntax match fennelVarArg "&"
+syntax match fennelAuxSyntax /\$\([1-9]\|\.\.\.\)\?/
+syntax keyword fennelAuxSyntax ... _ &
+" Pattern prefix `?foo` or guard syntax `(matched ? (pred matched)` used in `match`
+syntax match fennelAuxSyntax /\<?\ze\([^[:space:]\n"'(),;@\[\]\\`{}~]\|\>\)/ contained containedin=fennelSymbol
+" Special suffix for gensym in macro
+syntax match fennelAuxSyntax /[^[:space:]\n"'(),;@\[\]\\`{}~]\zs#\>/ contained containedin=fennelSymbol
 
 syntax match fennelQuote "'"
 syntax match fennelQuote "`"
@@ -298,8 +303,8 @@ syntax match fennelComment ";.*$" contains=fennelCommentTodo,@Spell
 syntax match fennelComment "#!.*$"
 
 " -*- TOP CLUSTER -*-
-" syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVariable,fennelVector
-syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVector
+" syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelAuxSyntax,fennelVariable,fennelVector
+syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelAuxSyntax,fennelVector
 
 syntax region fennelSexp   matchgroup=fennelParen start="("  end=")" contains=@fennelTop
 syntax region fennelVector matchgroup=fennelParen start="\[" end="]" contains=@fennelTop
@@ -329,7 +334,7 @@ highlight default link fennelMacro                     Macro
 highlight default link fennelRepeat                    Repeat
 
 highlight default link fennelSpecial                   Special
-highlight default link fennelVarArg                    Special
+highlight default link fennelAuxSyntax                 Special
 highlight default link fennelQuote                     SpecialChar
 highlight default link fennelUnquote                   SpecialChar
 highlight default link fennelMeta                      SpecialChar
