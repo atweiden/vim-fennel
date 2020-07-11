@@ -7,14 +7,71 @@ set cpo&vim
 
 " -*- KEYWORDS -*-
 let s:fennel_syntax_keywords = {
-    \   'fennelBoolean': ["false","true"]
-    \ , 'fennelCond': ["if","when","match"]
+    \   'fennelBoolean': ["false"
+    \ ,                   "true"]
+    \ , 'fennelCond': ["if"
+    \ ,                "match"
+    \ ,                "when"]
     \ , 'fennelConstant': ["nil"]
-    \ , 'fennelDefine': ["def","local","global","var","let"]
-    \ , 'fennelFunc': [".","set","set-forcibly!","tset",":","+","..","^","-","*","%","/","//","or","and",">","<",">=","<=","=","==","~=","not","#","require-macros","macros","eval-compiler","quote"]
-    \ , 'fennelMacro': ["->","->>","-?>","-?>>","doto"]
-    \ , 'fennelRepeat': ["each","while","for"]
-    \ , 'fennelSpecial': ["do","fn","partial","lamda","λ","require","values","luaexpr","luastatement","assert","type","pairs","ipairs","tostring","tonumber","unpack","setmetatable","getmetatable"]
+    \ , 'fennelDefine': ["def"
+    \ ,                  "global"
+    \ ,                  "let"
+    \ ,                  "local"
+    \ ,                  "var"]
+    \ , 'fennelFunc': ["."
+    \ ,                "set"
+    \ ,                "set-forcibly!"
+    \ ,                "tset"
+    \ ,                ":"
+    \ ,                "+"
+    \ ,                ".."
+    \ ,                "^"
+    \ ,                "-"
+    \ ,                "*"
+    \ ,                "%"
+    \ ,                "/"
+    \ ,                "//"
+    \ ,                "or"
+    \ ,                "and"
+    \ ,                ">"
+    \ ,                "<"
+    \ ,                ">="
+    \ ,                "<="
+    \ ,                "="
+    \ ,                "=="
+    \ ,                "~="
+    \ ,                "not"
+    \ ,                "#"
+    \ ,                "require-macros"
+    \ ,                "macros"
+    \ ,                "eval-compiler"
+    \ ,                "quote"]
+    \ , 'fennelMacro': ["->"
+    \ ,                 "->>"
+    \ ,                 "-?>"
+    \ ,                 "-?>>"
+    \ ,                 "doto"]
+    \ , 'fennelRepeat': ["each"
+    \ ,                  "while"
+    \ ,                  "for"]
+    \ , 'fennelSpecial': ["do"
+    \ ,                   "fn"
+    \ ,                   "partial"
+    \ ,                   "lamda"
+    \ ,                   "λ"
+    \ ,                   "require"
+    \ ,                   "values"
+    \ ,                   "luaexpr"
+    \ ,                   "luastatement"
+    \ ,                   "assert"
+    \ ,                   "type"
+    \ ,                   "pairs"
+    \ ,                   "ipairs"
+    \ ,                   "tostring"
+    \ ,                   "tonumber"
+    \ ,                   "unpack"
+    \ ,                   "setmetatable"
+    \ ,                   "getmetatable"]
     \ }
     " \ , 'fennelVariable': []
     " \ , 'fennelException': []
