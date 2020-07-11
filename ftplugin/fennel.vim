@@ -1,14 +1,31 @@
 if exists("b:did_ftplugin")
   finish
 endif
-let b:did_ftplugin = 1
 
 let s:cpo_save = &cpo
 set cpo&vim
 
-let b:undo_ftplugin = 'setlocal iskeyword< define< formatoptions< comments< commentstring< lispwords<'
-
-setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:,$
+setlocal iskeyword=@,33,35-38,42-43,45-58,60-63,94-95,124
+" 32: SPACE
+" 34: "
+" 39: '
+" 40,41: ()
+" 44: ,
+" 58: :
+" NOTE: `:` is not permitted in identifiers but...
+"   1. required to highlight special form `:`,
+"   2. required to highlight method call `(obj:method ...)`, and
+"   3. convenient when for example searching a keyword by `*`.
+" 59: ;
+" 64: @
+" 65-90: A-Z (included in @)
+" 91,93: []
+" 92: \
+" 96: `
+" 97-122: a-z (included in @)
+" 123,125: {}
+" 126: ~
+" 127: DEL
 
 " There will be false positives, but this is better than missing the whole set
 " of user-defined def* definitions.
@@ -43,8 +60,11 @@ if exists('loaded_matchit')
   let b:undo_ftplugin .= ' | unlet! b:match_words b:match_skip'
 endif
 
-let &cpo = s:cpo_save
+let b:undo_ftplugin = 'setlocal iskeyword< define< formatoptions< comments< commentstring< lispwords<'
 
-unlet! s:cpo_save s:setting s:dir
+let b:did_ftplugin = 1
+
+let &cpo = s:cpo_save
+unlet! s:cpo_save
 
 " vim: set filetype=vim foldmethod=marker foldlevel=0 nowrap:
