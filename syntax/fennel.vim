@@ -2,7 +2,7 @@ if exists("b:current_syntax")
   finish
 endif
 
-let s:cpo_sav = &cpo
+let s:cpo_save = &cpo
 set cpo&vim
 
 if has("folding") && exists("g:fennel_fold") && g:fennel_fold > 0
@@ -145,7 +145,7 @@ highlight default link fennelParen                     Delimiter
 
 let b:current_syntax = "fennel"
 
-let &cpo = s:cpo_sav
-unlet! s:cpo_sav
+let &cpo = s:cpo_save
+unlet! s:cpo_save
 
 " vim: set filetype=vim foldmethod=marker foldlevel=0 nowrap:
