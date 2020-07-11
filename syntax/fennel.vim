@@ -72,9 +72,9 @@ let s:fennel_syntax_keywords = {
     \ ,                   "quote"
     \ ,                   "macros"
     \ ,                   "require-macros"]
+    \ , 'fennelException': ["assert"]
     \ , 'fennelLuaKeyword': ["_G"
     \ ,                      "_VERSION"
-    \ ,                      "assert"
     \ ,                      "collectgarbage"
     \ ,                      "coroutine"
     \ ,                      "coroutine.create"
@@ -222,7 +222,6 @@ let s:fennel_syntax_keywords = {
     \ ,                      "xpcall"]
     \ }
     " \ , 'fennelVariable': []
-    " \ , 'fennelException': []
 
 function! s:syntax_keyword(dict)
   for key in keys(a:dict)
@@ -300,7 +299,7 @@ syntax match fennelComment "#!.*$"
 
 " -*- TOP CLUSTER -*-
 " syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVariable,fennelVector
-syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVector
+syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefine,fennelDeref,fennelDispatch,fennelError,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaKeyword,fennelMacro,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelVarArg,fennelVector
 
 syntax region fennelSexp   matchgroup=fennelParen start="("  end=")" contains=@fennelTop
 syntax region fennelVector matchgroup=fennelParen start="\[" end="]" contains=@fennelTop
