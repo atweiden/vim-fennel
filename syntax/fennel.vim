@@ -23,7 +23,8 @@ let s:fennel_syntax_keywords = {
     \ ,                       "lambda"
     \ ,                       "λ"
     \ ,                       "macro"
-    \ ,                       "let"]
+    \ ,                       "let"
+    \ ,                       "with-open"]
     \ , 'fennelComparator': ["and"
     \ ,                      "or"
     \ ,                      "not"
@@ -84,8 +85,7 @@ let s:fennel_syntax_keywords = {
     \ ,                   "partial"
     \ ,                   "hashfn"
     \ ,                   "pick-args"
-    \ ,                   "pick-values"
-    \ ,                   "with-open"]
+    \ ,                   "pick-values"]
     \ , 'fennelMagic': ["macrodebug"
     \ ,                 "macroexpand"
     \ ,                 "include"
