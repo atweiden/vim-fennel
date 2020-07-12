@@ -11,20 +11,7 @@ syntax iskeyword @,33,35-38,42-43,45-58,60-63,94-95,124,126
 let s:fennel_syntax_keywords = {
     \   'fennelBoolean': ["false"
     \ ,                   "true"]
-    \ , 'fennelCond': ["if"
-    \ ,                "match"
-    \ ,                "when"]
     \ , 'fennelConstant': ["nil"]
-    \ , 'fennelDefineSexp': ["global"
-    \ ,                      "local"
-    \ ,                      "var"
-    \ ,                      "macros"]
-    \ , 'fennelDefineSexps': ["fn"
-    \ ,                       "lambda"
-    \ ,                       "λ"
-    \ ,                       "macro"
-    \ ,                       "let"
-    \ ,                       "with-open"]
     \ , 'fennelComparator': ["and"
     \ ,                      "or"
     \ ,                      "not"
@@ -35,67 +22,83 @@ let s:fennel_syntax_keywords = {
     \ ,                      "="
     \ ,                      "=="
     \ ,                      "not="
-    \ ,                      "~="
-    \ ,                      "list?"
-    \ ,                      "sym?"
-    \ ,                      "in-scope?"
-    \ ,                      "table?"
-    \ ,                      "sequence?"
-    \ ,                      "varg?"
-    \ ,                      "multi-sym?"]
-    \ , 'fennelFunc': ["."
-    \ ,                ":"
-    \ ,                "+"
-    \ ,                ".."
+    \ ,                      "~="]
+    \ , 'fennelMath': ["+"
     \ ,                "^"
     \ ,                "-"
     \ ,                "*"
     \ ,                "%"
     \ ,                "/"
-    \ ,                "//"
-    \ ,                "set"
-    \ ,                "set-forcibly!"
-    \ ,                "tset"
-    \ ,                "list"
-    \ ,                "length"
-    \ ,                "#"
-    \ ,                "quote"
-    \ ,                "unquote"
-    \ ,                "import-macros"
-    \ ,                "require-macros"]
-    \ , 'fennelBitwiseOp': ["band"
-    \ ,                     "bnot"
-    \ ,                     "bor"
-    \ ,                     "bxor"
-    \ ,                     "lshift"
-    \ ,                     "rshift"]
-    \ , 'fennelMacro': ["->"
-    \ ,                 "->>"
-    \ ,                 "-?>"
-    \ ,                 "-?>>"
-    \ ,                 "doto"
-    \ ,                 "ipairs"
-    \ ,                 "pairs"
-    \ ,                 "next"]
+    \ ,                "//"]
+    \ , 'fennelBitwise': ["band"
+    \ ,                   "bnot"
+    \ ,                   "bor"
+    \ ,                   "bxor"
+    \ ,                   "lshift"
+    \ ,                   "rshift"]
+    \ , 'fennelConcat': [".."]
+    \ , 'fennelCond': ["if"
+    \ ,                "match"
+    \ ,                "when"]
     \ , 'fennelRepeat': ["each"
     \ ,                  "while"
     \ ,                  "for"]
-    \ , 'fennelSpecial': ["do"
+    \ , 'fennelDefMonoForm': ["global"
+    \ ,                       "local"
+    \ ,                       "var"
+    \ ,                       "macros"]
+    \ , 'fennelDefPolyForm': ["fn"
+    \ ,                       "lambda"
+    \ ,                       "λ"
+    \ ,                       "macro"
+    \ ,                       "let"
+    \ ,                       "with-open"]
+    \ , 'fennelFunction': ["."
+    \ ,                    ":"
+    \ ,                    "set"
+    \ ,                    "set-forcibly!"
+    \ ,                    "tset"
+    \ ,                    "list"
+    \ ,                    "length"
+    \ ,                    "#"
+    \ ,                    "list?"
+    \ ,                    "sym?"
+    \ ,                    "in-scope?"
+    \ ,                    "table?"
+    \ ,                    "sequence?"
+    \ ,                    "varg?"
+    \ ,                    "multi-sym?"
+    \ ,                    "quote"
+    \ ,                    "unquote"
+    \ ,                    "import-macros"
+    \ ,                    "require-macros"]
+    \ , 'fennelSpecial': ["pairs"
+    \ ,                   "ipairs"
     \ ,                   "values"
     \ ,                   "partial"
     \ ,                   "hashfn"
     \ ,                   "pick-args"
     \ ,                   "pick-values"]
-    \ , 'fennelMagic': ["macrodebug"
-    \ ,                 "macroexpand"
-    \ ,                 "include"
-    \ ,                 "lua"
-    \ ,                 "eval-compiler"]
+    \ , 'fennelMagic': ["->"
+    \ ,                 "->>"
+    \ ,                 "-?>"
+    \ ,                 "-?>>"
+    \ ,                 "doto"
+    \ ,                 "do"
+    \ ,                 "next"]
+    \ , 'fennelVeryMagic': ["macrodebug"
+    \ ,                     "macroexpand"
+    \ ,                     "include"
+    \ ,                     "lua"
+    \ ,                     "eval-compiler"]
     \ , 'fennelSymbolOp': ["gensym"
     \ ,                    "sym"]
     \ , 'fennelDoc': ["comment"
     \ ,               "doc"]
     \ , 'fennelException': ["error"]
+    \ , 'fennelDummyVariable': ["_"]
+    \ , 'fennelVariadic': ["..."]
+    \ , 'fennelCaptureRemaining': ["&"]
     \ , 'fennelLuaGlobal': ["_G"
     \ ,                     "_VERSION"
     \ ,                     "package"
@@ -249,14 +252,7 @@ function! s:syntax_keyword(dict)
   endfor
 endfunction
 
-if exists('b:fennel_syntax_without_core_keywords') && b:fennel_syntax_without_core_keywords
-  " Only match language specials and primitives
-  for s:key in ['fennelBoolean', 'fennelConstant', 'fennelException', 'fennelSpecial']
-    execute 'syntax keyword' s:key join(s:fennel_syntax_keywords[s:key], ' ')
-  endfor
-else
-  call s:syntax_keyword(s:fennel_syntax_keywords)
-endif
+call s:syntax_keyword(s:fennel_syntax_keywords)
 
 if exists('g:fennel_syntax_keywords')
   call s:syntax_keyword(g:fennel_syntax_keywords)
@@ -305,10 +301,11 @@ syntax match fennelNumber "\v<[-+]?%(0\o*|0x\x+|[1-9]\d*)N?>"
 syntax match fennelNumber "\v<[-+]?%(0|[1-9]\d*|%(0|[1-9]\d*)\.\d*)%(M|[eE][-+]?\d+)?>"
 syntax match fennelNumber "\v<[-+]?%(0|[1-9]\d*)/%(0|[1-9]\d*)>"
 
+" Hash function implicitly named arguments
 syntax match fennelAuxSyntax /\$\([1-9]\|\.\.\.\)\?/
-syntax keyword fennelAuxSyntax ... _ &
-" Pattern prefix `?foo` or guard syntax `(matched ? (pred matched)` used in `match`
-syntax match fennelAuxSyntax /\<?\ze\([^[:space:]\n"'(),;@\[\]\\`{}~]\|\>\)/ contained containedin=fennelSymbol
+" Arity-checked function parameter optionality, e.g. `?foo`
+" Pattern matching guard syntax, e.g. `(matched ? (pred matched)`
+syntax match fennelAuxSyntax /\<?\ze\([^[:space:]\n"'(),;@\[\]\\`{}~]\|\>\)/ containedin=fennelSymbol
 
 syntax match fennelQuote "'"
 syntax match fennelQuote "`"
@@ -323,8 +320,48 @@ syntax match fennelComment ";.*$" contains=fennelCommentTodo,@Spell
 syntax match fennelComment "#!.*$"
 
 " -*- TOP CLUSTER -*-
-" syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefineSexp,fennelDefineSexps,fennelDeref,fennelDispatch,fennelError,fennelDoc,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaGlobal,fennelLuaCompile,fennelLuaKeyword,fennelBitwiseOp,fennelMacro,fennelMagic,fennelSymbolOp,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelAuxSyntax,fennelVariable,fennelVector
-syntax cluster fennelTop contains=@Spell,fennelAnonArg,fennelBoolean,fennelCharacter,fennelComment,fennelCond,fennelConstant,fennelDefineSexp,fennelDefineSexps,fennelDeref,fennelDispatch,fennelError,fennelDoc,fennelException,fennelFunc,fennelComparator,fennelKeyword,fennelLuaGlobal,fennelLuaCompile,fennelLuaKeyword,fennelBitwiseOp,fennelMacro,fennelMagic,fennelSymbolOp,fennelMap,fennelMeta,fennelNumber,fennelQuote,fennelRepeat,fennelSexp,fennelSpecial,fennelString,fennelSymbol,fennelUnquote,fennelAuxSyntax,fennelVector
+syntax cluster fennelTop contains=@Spell
+syntax cluster fennelTop add=fennelAnonArg
+syntax cluster fennelTop add=fennelAuxSyntax
+syntax cluster fennelTop add=fennelBitwise
+syntax cluster fennelTop add=fennelBoolean
+syntax cluster fennelTop add=fennelCaptureRemaining
+syntax cluster fennelTop add=fennelCharacter
+syntax cluster fennelTop add=fennelComment
+syntax cluster fennelTop add=fennelComparator
+syntax cluster fennelTop add=fennelConcat
+syntax cluster fennelTop add=fennelCond
+syntax cluster fennelTop add=fennelConstant
+syntax cluster fennelTop add=fennelDefMonoForm
+syntax cluster fennelTop add=fennelDefPolyForm
+syntax cluster fennelTop add=fennelDeref
+syntax cluster fennelTop add=fennelDispatch
+syntax cluster fennelTop add=fennelDoc
+syntax cluster fennelTop add=fennelDummyVariable
+syntax cluster fennelTop add=fennelError
+syntax cluster fennelTop add=fennelException
+syntax cluster fennelTop add=fennelFunction
+syntax cluster fennelTop add=fennelKeyword
+syntax cluster fennelTop add=fennelLuaCompile
+syntax cluster fennelTop add=fennelLuaGlobal
+syntax cluster fennelTop add=fennelLuaKeyword
+syntax cluster fennelTop add=fennelMagic
+syntax cluster fennelTop add=fennelMap
+syntax cluster fennelTop add=fennelMath
+syntax cluster fennelTop add=fennelMeta
+syntax cluster fennelTop add=fennelNumber
+syntax cluster fennelTop add=fennelQuote
+syntax cluster fennelTop add=fennelRepeat
+syntax cluster fennelTop add=fennelSexp
+syntax cluster fennelTop add=fennelSpecial
+syntax cluster fennelTop add=fennelString
+syntax cluster fennelTop add=fennelSymbol
+syntax cluster fennelTop add=fennelSymbolOp
+syntax cluster fennelTop add=fennelUnquote
+"syntax cluster fennelTop add=fennelVariable
+syntax cluster fennelTop add=fennelVariadic
+syntax cluster fennelTop add=fennelVector
+syntax cluster fennelTop add=fennelVeryMagic
 
 syntax region fennelSexp   matchgroup=fennelParen start="("  end=")" contains=@fennelTop
 syntax region fennelVector matchgroup=fennelParen start="\[" end="]" contains=@fennelTop
@@ -335,48 +372,47 @@ syntax match fennelError "]\|}\|)"
 
 syntax sync fromstart
 
-highlight default link fennelConstant                  Boolean
+highlight default link fennelAuxSyntax                 Macro
+highlight default link fennelBitwise                   Operator
 highlight default link fennelBoolean                   Boolean
+highlight default link fennelCaptureRemaining          Macro
 highlight default link fennelCharacter                 Character
+highlight default link fennelComment                   Comment
+highlight default link fennelCommentTodo               PreProc
+highlight default link fennelComparator                Operator
+highlight default link fennelConcat                    Operator
+highlight default link fennelCond                      Conditional
+highlight default link fennelConstant                  Boolean
+highlight default link fennelDefMonoForm               Delimiter
+highlight default link fennelDefPolyForm               Keyword
+highlight default link fennelDeref                     SpecialChar
+highlight default link fennelDispatch                  SpecialChar
+highlight default link fennelDoc                       Delimiter
+highlight default link fennelDummyVariable             Comment
+highlight default link fennelError                     Error
+highlight default link fennelException                 Exception
+highlight default link fennelFunction                  Statement
 highlight default link fennelKeyword                   String
 highlight default link fennelKeywordDelimiter          Structure
+highlight default link fennelLuaCompile                Statement
+highlight default link fennelLuaGlobal                 Constant
+highlight default link fennelLuaKeyword                Function
+highlight default link fennelMagic                     Special
+highlight default link fennelMath                      Operator
+highlight default link fennelMeta                      SpecialChar
 highlight default link fennelNumber                    Number
+highlight default link fennelParen                     Delimiter
+highlight default link fennelQuote                     SpecialChar
+highlight default link fennelRepeat                    Repeat
+highlight default link fennelSpecial                   Macro
 highlight default link fennelString                    String
 highlight default link fennelStringDelimiter           StorageClass
 highlight default link fennelStringEscape              Character
-
-highlight default link fennelVariable                  Identifier
-highlight default link fennelCond                      Conditional
-highlight default link fennelDefineSexp                Delimiter
-highlight default link fennelDefineSexps               Keyword
-highlight default link fennelDoc                       Delimiter
-highlight default link fennelException                 Exception
-highlight default link fennelFunc                      Statement
-highlight default link fennelBitwiseOp                 Constant
-highlight default link fennelComparator                Operator
-highlight default link fennelMacro                     Special
-highlight default link fennelMagic                     PreProc
 highlight default link fennelSymbolOp                  Type
-highlight default link fennelRepeat                    Repeat
-
-highlight default link fennelSpecial                   Macro
-highlight default link fennelAuxSyntax                 Macro
-highlight default link fennelQuote                     SpecialChar
 highlight default link fennelUnquote                   SpecialChar
-highlight default link fennelMeta                      SpecialChar
-highlight default link fennelDeref                     SpecialChar
-highlight default link fennelDispatch                  SpecialChar
-
-highlight default link fennelLuaGlobal                 Constant
-highlight default link fennelLuaCompile                Statement
-highlight default link fennelLuaKeyword                Function
-
-highlight default link fennelComment                   Comment
-highlight default link fennelCommentTodo               PreProc
-
-highlight default link fennelError                     Error
-
-highlight default link fennelParen                     Delimiter
+highlight default link fennelVariable                  Identifier
+highlight default link fennelVariadic                  Delimiter
+highlight default link fennelVeryMagic                 PreProc
 
 let b:current_syntax = "fennel"
 
