@@ -472,7 +472,7 @@ highlight default link fennelMagic                     Special
 highlight default link fennelMath                      Operator
 highlight default link fennelNumber                    Number
 highlight default link fennelParen                     Delimiter
-highlight default link fennelPunningLookup             Structure
+highlight default link fennelPunningLookup             Statement
 highlight default link fennelQuote                     SpecialChar
 highlight default link fennelRepeat                    Repeat
 highlight default link fennelShebang                   Comment
