@@ -351,7 +351,7 @@ syntax match fennelCommentTitle ';;\s*\zs\u\w*\(\s\+\u\w*\)*:' contained contain
 syntax region fennelCommentString start='\s\+\zs"' end='"' contained oneline
 syntax region fennelComment excludenl start=/;/ end=/$/ contains=fennelCommentTodo,@Spell
 syntax region fennelCommentDoc excludenl start=/;;/ end=/$/ contains=fennelCommentString,fennelCommentTitle,fennelCommentTodo,@Spell
-syntax match fennelShebang /\%^#![\/ ].*$/
+syntax match fennelShebang excludenl /\%^#![\/ ].*$/
 
 syntax region fennelString matchgroup=fennelStringDelimiter start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=@fennelEscapeChars,@Spell
 syntax cluster fennelEscapeChars contains=fennelEscapeCharCode
