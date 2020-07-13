@@ -271,9 +271,8 @@ delfunction s:syntax_keyword
 "   * Must not end in a : or /
 "   * Must not have two adjacent colons except at the beginning
 "   * Must not contain any reader metacharacters except for ' and #
-syntax match fennelKeywordLabel "\v<:{1,2}%([^ \n\r\t()\[\]{}";@^`~\\%/]+/)*[^ \n\r\t()\[\]{}";@^`~\\%/]+:@<!>" containedin=fennelKeyword
-
-syntax region fennelKeyword matchgroup=fennelKeywordDelimiter start=/\v<:/ end="\v\ze[ \n\r\t()[\]{}";@`~]+" contains=fennelKeywordLabel display
+syntax match fennelKeywordLabel /:[^[:space:]\n"'(),;@\[\]\\`{}~]\+/ contained containedin=fennelKeyword
+syntax region fennelKeyword matchgroup=fennelKeywordDelimiter start=/\v<:/ end=/\v\ze[[:space:]\n"'(),;@\[\]\\`{}~]+/ contains=fennelKeywordLabel display
 
 syntax region fennelString matchgroup=fennelStringDelimiter start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=@fennelEscapeChars,@Spell
 syntax cluster fennelEscapeChars contains=fennelEscapeCharCode
@@ -286,7 +285,7 @@ syntax match fennelEscapeCharLiteral /\\[\\"']/ contained
 syntax match fennelEscapeCharMnemonic /\\[abfnrtv]/ contained
 syntax match fennelEscapeCharMnemonicZ /\\z/ contained
 
-syntax match fennelSymbol "\v%([a-zA-Z!$&*_+=|<.>?-]|[^\x00-\x7F])+%(:?%([a-zA-Z0-9!#$%&*_+=|'<.>/?-]|[^\x00-\x7F]))*[:]@<!"
+syntax match fennelSymbol /[^#:0-9[:space:]\n"'(),;@\[\]\\`{}~][^[:space:]\n"'(),;@\[\]\\`{}~]*/
 
 let s:radix_chars = "0123456789abcdefghijklmnopqrstuvwxyz"
 for s:radix in range(2, 36)
@@ -302,7 +301,7 @@ syntax match fennelNumber "\v<[-+]?%(0|[1-9]\d*)/%(0|[1-9]\d*)>"
 syntax match fennelAuxSyntax /\$\([1-9]\|\.\.\.\)\?/
 " Arity-checked function parameter optionality, e.g. `?foo`
 " Pattern matching guard syntax, e.g. `(matched ? (pred matched)`
-syntax match fennelAuxSyntax /\<?\ze\([^[:space:]\n"'(),;@\[\]\\`{}~]\|\>\)/ containedin=fennelSymbol
+syntax match fennelAuxSyntax /\<?\ze\([^[:space:]\n"'(),;@\[\]\\`{}~]\|\>\)/ contained containedin=fennelSymbol
 
 syntax match fennelQuote "'"
 syntax match fennelQuote "`"
