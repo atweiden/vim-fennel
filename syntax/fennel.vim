@@ -277,17 +277,16 @@ syntax region fennelKeyword matchgroup=fennelKeywordDelimiter start=/\v<:/ end="
 
 syntax match fennelStringEscape "\v\\%([\\btnfrz"]|u\x{4}|[0-3]\o{2}|\o{1,2})" contained
 
-syntax region fennelString matchgroup=fennelStringDelimiter start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=fennelStringEscape,@Spell
-
-syntax match fennelCharacter "\\."
-syntax match fennelCharacter "\\o\%([0-3]\o\{2\}\|\o\{1,2\}\)"
-syntax match fennelCharacter "\\u\x\{4\}"
-syntax match fennelCharacter "\\space"
-syntax match fennelCharacter "\\tab"
-syntax match fennelCharacter "\\newline"
-syntax match fennelCharacter "\\return"
-syntax match fennelCharacter "\\backspace"
-syntax match fennelCharacter "\\formfeed"
+syntax region fennelString matchgroup=fennelStringDelimiter start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=@fennelEscapeChars,@Spell
+syntax cluster fennelEscapeChars contains=fennelEscapeCharCode
+syntax cluster fennelEscapeChars add=fennelEscapeCharLiteral
+syntax cluster fennelEscapeChars add=fennelEscapeCharMnemonic
+syntax cluster fennelEscapeChars add=fennelEscapeCharMnemonicZ
+syntax match fennelEscapeCharCode /\\\%(\%(\%([01]\)\?[0-9]\)\?[0-9]\|2[0-4][0-9]\|25[0-5]\)/ contained
+syntax match fennelEscapeCharCode '\\x[[:xdigit:]]\{2}' contained
+syntax match fennelEscapeCharLiteral /\\[\\"']/ contained
+syntax match fennelEscapeCharMnemonic /\\[abfnrtv]/ contained
+syntax match fennelEscapeCharMnemonicZ /\\z/ contained
 
 syntax match fennelSymbol "\v%([a-zA-Z!$&*_+=|<.>?-]|[^\x00-\x7F])+%(:?%([a-zA-Z0-9!#$%&*_+=|'<.>/?-]|[^\x00-\x7F]))*[:]@<!"
 
@@ -413,6 +412,10 @@ highlight default link fennelUnquote                   SpecialChar
 highlight default link fennelVariable                  Identifier
 highlight default link fennelVariadic                  Delimiter
 highlight default link fennelVeryMagic                 PreProc
+highlight default link fennelEscapeCharCode            Character
+highlight default link fennelEscapeCharLiteral         SpecialChar
+highlight default link fennelEscapeCharMnemonic        SpecialChar
+highlight default link fennelEscapeCharMnemonicZ       Comment
 
 let b:current_syntax = "fennel"
 
