@@ -385,13 +385,18 @@ syntax match fennelGuardOrMarker /\<?\ze\([^[:space:]\n"'(),;@\[\]\\`{}~]\|\>\)/
 " Hash function implicitly named arguments
 syntax match fennelHashFnArg /\$\([1-9]\|\.\.\.\)\?/
 
+syntax region fennelSexp   matchgroup=fennelParen start="("  end=")" contains=@fennelTop
+syntax region fennelVector matchgroup=fennelParen start="\[" end="]" contains=@fennelTop
+syntax region fennelMap    matchgroup=fennelParen start="{"  end="}" contains=@fennelTop
+
+" Highlight superfluous closing parens, brackets and braces.
+syntax match fennelError "]\|}\|)"
+
 " -*- TOP CLUSTER -*-
 syntax cluster fennelTop contains=@Spell
-syntax cluster fennelTop add=fennelAnonArg
 syntax cluster fennelTop add=fennelBitwise
 syntax cluster fennelTop add=fennelBoolean
 syntax cluster fennelTop add=fennelCaptureRemaining
-syntax cluster fennelTop add=fennelCharacter
 syntax cluster fennelTop add=fennelComment
 syntax cluster fennelTop add=fennelCommentDoc
 syntax cluster fennelTop add=fennelComparator
@@ -422,6 +427,7 @@ syntax cluster fennelTop add=fennelPunningLookup
 syntax cluster fennelTop add=fennelQuote
 syntax cluster fennelTop add=fennelRepeat
 syntax cluster fennelTop add=fennelSexp
+syntax cluster fennelTop add=fennelShebang
 syntax cluster fennelTop add=fennelSpecial
 syntax cluster fennelTop add=fennelString
 syntax cluster fennelTop add=fennelSymbol
@@ -432,19 +438,11 @@ syntax cluster fennelTop add=fennelVariadic
 syntax cluster fennelTop add=fennelVector
 syntax cluster fennelTop add=fennelVeryMagic
 
-syntax region fennelSexp   matchgroup=fennelParen start="("  end=")" contains=@fennelTop
-syntax region fennelVector matchgroup=fennelParen start="\[" end="]" contains=@fennelTop
-syntax region fennelMap    matchgroup=fennelParen start="{"  end="}" contains=@fennelTop
-
-" Highlight superfluous closing parens, brackets and braces.
-syntax match fennelError "]\|}\|)"
-
 syntax sync fromstart
 
 highlight default link fennelBitwise                   Function
 highlight default link fennelBoolean                   Boolean
 highlight default link fennelCaptureRemaining          Macro
-highlight default link fennelCharacter                 Character
 highlight default link fennelComment                   Comment
 highlight default link fennelCommentDoc                Comment
 highlight default link fennelCommentString             String
@@ -488,7 +486,7 @@ highlight default link fennelString                    String
 highlight default link fennelStringDelimiter           Delimiter
 highlight default link fennelSymbolOp                  Type
 highlight default link fennelUnquote                   SpecialChar
-highlight default link fennelVariable                  Identifier
+"highlight default link fennelVariable                  Identifier
 highlight default link fennelVariadic                  Delimiter
 highlight default link fennelVeryMagic                 PreProc
 
