@@ -1,0 +1,95 @@
+*vim-fennel.txt* Fennel syntax highlighting for Vim
+*vim-fennel*
+
+==============================================================================
+#                                                                            #
+#      ######### ######### ####      ## ####      ## ######### ##            #
+#      ##        ##        ## ##     ## ## ##     ## ##        ##            #
+#      ##        ##        ##  ##    ## ##  ##    ## ##        ##            #
+#      ######### ######### ##   ##   ## ##   ##   ## ######### ##            #
+#      ##        ##        ##    ##  ## ##    ##  ## ##        ##            #
+#      ##        ##        ##     ## ## ##     ## ## ##        ##            #
+#      ##        ######### ##      #### ###    ##### ######### #########     #
+#                                                                            #
+==============================================================================
+CONTENTS                                                     *fennel-contents*
+
+  1. Intro........................................|fennel-intro|
+  2. Install......................................|fennel-install|
+  3. Settings.....................................|fennel-settings|
+  4. Credits......................................|fennel-credits|
+
+==============================================================================
+INTRO                                                           *fennel-intro*
+
+Fennel support for Vim.
+
+  * Improved syntax highlighting.
+
+==============================================================================
+INSTALL                                                       *fennel-install*
+
+Standard installation:
+
+*  Vim 8 |packages| >
+
+    git clone https://github.com/atweiden/vim-fennel \
+      ~/.vim/pack/plugins/start/vim-fennel
+<
+*  Pathogen >
+
+    git clone https://github.com/atweiden/vim-fennel \
+      ~/.vim/bundle/vim-fennel
+<
+*  Plug >
+
+    Plug 'atweiden/vim-fennel'
+<
+*  Vundle >
+
+    Plugin 'atweiden/vim-fennel'
+<
+*  dein.vim >
+
+    call dein#add('atweiden/vim-fennel')
+<
+*  minpac >
+
+    call minpac#add('atweiden/vim-fennel')
+<
+
+==============================================================================
+SETTINGS                                                     *fennel-settings*
+
+                                                *'g:fennel_highlight_conjure'*
+
+Highlight macros defined in https://github.com/Olical/conjure as keywords
+(e.g. `module`, `defn`). By default it is disabled.
+>
+  let g:fennel_highlight_conjure = 1
+<
+
+                                                   *'g:fennel_highlight_lume'*
+
+Highlight functions exported in https://github.com/rxi/lume
+(e.g. `lume.all`, `lume.filter`). By default it is disabled.
+>
+  let g:fennel_highlight_lume = 1
+<
+
+==============================================================================
+CREDITS                                                       *fennel-credits*
+
+- Fennel plugin authors
+  * christoph-frick/vim-fennel-ft
+  * mnacamura/vim-fennel-syntax
+  * bakpakin/fennel.vim
+- Other plugin authors
+  * Olical/conjure
+  * guns/vim-clojure-static
+  * Raku/vim-raku
+  * fatih/vim-go
+  * elixir-editors/vim-elixir
+
+
+ vim: ft=help tw=78 et ts=2 sw=2 sts=2 norl
