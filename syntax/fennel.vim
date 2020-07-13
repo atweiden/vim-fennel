@@ -445,7 +445,7 @@ highlight default link fennelComment                   Comment
 highlight default link fennelCommentTodo               Todo
 highlight default link fennelComparator                Operator
 highlight default link fennelComparatorWord            Function
-highlight default link fennelConcat                    Structure
+highlight default link fennelConcat                    Operator
 highlight default link fennelCond                      Conditional
 highlight default link fennelConstant                  Boolean
 highlight default link fennelDefMonoForm               Delimiter
