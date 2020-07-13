@@ -311,10 +311,9 @@ syntax match fennelMeta "\^"
 syntax match fennelDeref "@"
 syntax match fennelDispatch "\v#[\^'=<_]?"
 
-syntax keyword fennelCommentTodo contained FIXME XXX TODO FIXME: XXX: TODO:
-
-syntax match fennelComment ";.*$" contains=fennelCommentTodo,@Spell
-syntax match fennelComment "#!.*$"
+syntax region fennelComment start=/;/ end=/$/ contains=fennelCommentTodo,@Spell
+syntax match fennelCommentTodo /\(FIXME\|NOTE\|TBD\|TODO\|XXX\):\?/ contained
+syntax match fennelShebang /\%^#![\/ ].*$/
 
 " -*- TOP CLUSTER -*-
 syntax cluster fennelTop contains=@Spell
@@ -405,6 +404,7 @@ highlight default link fennelNumber                    Number
 highlight default link fennelParen                     Delimiter
 highlight default link fennelQuote                     SpecialChar
 highlight default link fennelRepeat                    Repeat
+highlight default link fennelShebang                   Comment
 highlight default link fennelSpecial                   Macro
 highlight default link fennelString                    String
 highlight default link fennelStringDelimiter           StorageClass
