@@ -12,17 +12,17 @@ let s:fennel_syntax_keywords = {
     \   'fennelBoolean': ["false"
     \ ,                   "true"]
     \ , 'fennelConstant': ["nil"]
-    \ , 'fennelComparator': ["and"
-    \ ,                      "or"
-    \ ,                      "not"
-    \ ,                      ">"
+    \ , 'fennelComparator': [">"
     \ ,                      "<"
     \ ,                      ">="
     \ ,                      "<="
     \ ,                      "="
     \ ,                      "=="
-    \ ,                      "not="
     \ ,                      "~="]
+    \ , 'fennelComparatorWord': ["and"
+    \ ,                          "or"
+    \ ,                          "not"
+    \ ,                          "not="]
     \ , 'fennelMath': ["+"
     \ ,                "^"
     \ ,                "-"
@@ -36,7 +36,6 @@ let s:fennel_syntax_keywords = {
     \ ,                   "bxor"
     \ ,                   "lshift"
     \ ,                   "rshift"]
-    \ , 'fennelConcat': [".."]
     \ , 'fennelCond': ["if"
     \ ,                "match"
     \ ,                "when"]
@@ -49,18 +48,16 @@ let s:fennel_syntax_keywords = {
     \ ,                       "macros"]
     \ , 'fennelDefPolyForm': ["fn"
     \ ,                       "lambda"
-    \ ,                       "λ"
-    \ ,                       "macro"
-    \ ,                       "let"
-    \ ,                       "with-open"]
+    \ ,                       "λ"]
+    \ , 'fennelDefPolyFormVoid': ["macro"
+    \ ,                           "let"
+    \ ,                           "with-open"]
     \ , 'fennelFunction': ["."
-    \ ,                    ":"
     \ ,                    "set"
     \ ,                    "set-forcibly!"
     \ ,                    "tset"
     \ ,                    "list"
     \ ,                    "length"
-    \ ,                    "#"
     \ ,                    "list?"
     \ ,                    "sym?"
     \ ,                    "in-scope?"
@@ -72,6 +69,12 @@ let s:fennel_syntax_keywords = {
     \ ,                    "unquote"
     \ ,                    "import-macros"
     \ ,                    "require-macros"]
+    \ , 'fennelDummyVariable': ["_"]
+    \ , 'fennelVariadic': ["..."]
+    \ , 'fennelCaptureRemaining': ["&"]
+    \ , 'fennelConcat': [".."]
+    \ , 'fennelLength': ["#"]
+    \ , 'fennelPunningLookup': [":"]
     \ , 'fennelSpecial': ["pairs"
     \ ,                   "ipairs"
     \ ,                   "values"
@@ -83,8 +86,8 @@ let s:fennel_syntax_keywords = {
     \ ,                 "->>"
     \ ,                 "-?>"
     \ ,                 "-?>>"
-    \ ,                 "doto"
     \ ,                 "do"
+    \ ,                 "doto"
     \ ,                 "next"]
     \ , 'fennelVeryMagic': ["macrodebug"
     \ ,                     "macroexpand"
@@ -96,9 +99,6 @@ let s:fennel_syntax_keywords = {
     \ , 'fennelDoc': ["comment"
     \ ,               "doc"]
     \ , 'fennelException': ["error"]
-    \ , 'fennelDummyVariable': ["_"]
-    \ , 'fennelVariadic': ["..."]
-    \ , 'fennelCaptureRemaining': ["&"]
     \ , 'fennelLuaGlobal': ["_G"
     \ ,                     "_VERSION"
     \ ,                     "package"
@@ -246,6 +246,17 @@ let s:fennel_syntax_keywords = {
     \ }
     " \ , 'fennelVariable': []
 
+let s:fennel_conjure_syntax_keywords = {
+    \   'fennelConjureKeyword': ["def"
+    \ ,                          "def-"
+    \ ,                          "defn"
+    \ ,                          "defn-"
+    \ ,                          "defonce"
+    \ ,                          "defonce-"
+    \ ,                          "deftest"
+    \ ,                          "module"]
+    \ }
+
 function! s:syntax_keyword(dict)
   for key in keys(a:dict)
     execute 'syntax keyword' key join(a:dict[key], ' ')
@@ -262,9 +273,6 @@ if exists('b:fennel_syntax_keywords')
   call s:syntax_keyword(b:fennel_syntax_keywords)
 endif
 
-unlet! s:key
-delfunction s:syntax_keyword
-
 " <identifier> -> <initial> <subsequent> *
 " where <initial>    -> [^#:0-9[:space:]\n"'(),;@\[\]\\`{}~]
 "       <subsequent> -> [^[:space:]\n"'(),;@\[\]\\`{}~]
@@ -274,6 +282,10 @@ syntax match fennelSymbol /[^#:0-9[:space:]\n"'(),;@\[\]\\`{}~][^[:space:]\n"'()
 " fennel accepts keywords such as :::
 syntax match fennelKeywordLabel /:[^[:space:]\n"'(),;@\[\]\\`{}~]\+/ contained containedin=fennelKeyword
 syntax region fennelKeyword matchgroup=fennelKeywordDelimiter start=/\v<:/ end=/\v\ze[[:space:]\n"'(),;@\[\]\\`{}~]+/ contains=fennelKeywordLabel display
+
+syntax region fennelComment start=/;/ end=/$/ contains=fennelCommentTodo,@Spell
+syntax match fennelCommentTodo /\(FIXME\|NOTE\|TBD\|TODO\|XXX\):\?/ contained
+syntax match fennelShebang /\%^#![\/ ].*$/
 
 syntax region fennelString matchgroup=fennelStringDelimiter start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=@fennelEscapeChars,@Spell
 syntax cluster fennelEscapeChars contains=fennelEscapeCharCode
@@ -296,41 +308,42 @@ syntax match fennelNumber "\v<[-+]?%(0\o*|0x\x+|[1-9]\d*)N?>"
 syntax match fennelNumber "\v<[-+]?%(0|[1-9]\d*|%(0|[1-9]\d*)\.\d*)%(M|[eE][-+]?\d+)?>"
 syntax match fennelNumber "\v<[-+]?%(0|[1-9]\d*)/%(0|[1-9]\d*)>"
 
-" Hash function implicitly named arguments
-syntax match fennelAuxSyntax /\$\([1-9]\|\.\.\.\)\?/
-" Arity-checked function parameter optionality, e.g. `?foo`
-" Pattern matching guard syntax, e.g. `(matched ? (pred matched)`
-syntax match fennelAuxSyntax /\<?\ze\([^[:space:]\n"'(),;@\[\]\\`{}~]\|\>\)/ contained containedin=fennelSymbol
-
 syntax match fennelQuote "'"
 syntax match fennelQuote "`"
 syntax match fennelUnquote ","
 
-syntax region fennelComment start=/;/ end=/$/ contains=fennelCommentTodo,@Spell
-syntax match fennelCommentTodo /\(FIXME\|NOTE\|TBD\|TODO\|XXX\):\?/ contained
-syntax match fennelShebang /\%^#![\/ ].*$/
+" Arity-checked function parameter optionality, e.g. `(λ f [foo ?bar])`
+" and pattern matching guard syntax, e.g. `(matched ? (pred matched)`
+syntax match fennelGuardOrMarker /\<?\ze\([^[:space:]\n"'(),;@\[\]\\`{}~]\|\>\)/ contained containedin=fennelSymbol
+
+" Hash function implicitly named arguments
+syntax match fennelHashFnArg /\$\([1-9]\|\.\.\.\)\?/
 
 " -*- TOP CLUSTER -*-
 syntax cluster fennelTop contains=@Spell
 syntax cluster fennelTop add=fennelAnonArg
-syntax cluster fennelTop add=fennelAuxSyntax
 syntax cluster fennelTop add=fennelBitwise
 syntax cluster fennelTop add=fennelBoolean
 syntax cluster fennelTop add=fennelCaptureRemaining
 syntax cluster fennelTop add=fennelCharacter
 syntax cluster fennelTop add=fennelComment
 syntax cluster fennelTop add=fennelComparator
+syntax cluster fennelTop add=fennelComparatorWord
 syntax cluster fennelTop add=fennelConcat
 syntax cluster fennelTop add=fennelCond
 syntax cluster fennelTop add=fennelConstant
 syntax cluster fennelTop add=fennelDefMonoForm
 syntax cluster fennelTop add=fennelDefPolyForm
+syntax cluster fennelTop add=fennelDefPolyFormVoid
 syntax cluster fennelTop add=fennelDoc
 syntax cluster fennelTop add=fennelDummyVariable
 syntax cluster fennelTop add=fennelError
 syntax cluster fennelTop add=fennelException
 syntax cluster fennelTop add=fennelFunction
+syntax cluster fennelTop add=fennelGuardOrMarker
+syntax cluster fennelTop add=fennelHashFnArg
 syntax cluster fennelTop add=fennelKeyword
+syntax cluster fennelTop add=fennelLength
 syntax cluster fennelTop add=fennelLuaCompile
 syntax cluster fennelTop add=fennelLuaGlobal
 syntax cluster fennelTop add=fennelLuaKeyword
@@ -338,6 +351,7 @@ syntax cluster fennelTop add=fennelMagic
 syntax cluster fennelTop add=fennelMap
 syntax cluster fennelTop add=fennelMath
 syntax cluster fennelTop add=fennelNumber
+syntax cluster fennelTop add=fennelPunningLookup
 syntax cluster fennelTop add=fennelQuote
 syntax cluster fennelTop add=fennelRepeat
 syntax cluster fennelTop add=fennelSexp
@@ -360,19 +374,20 @@ syntax match fennelError "]\|}\|)"
 
 syntax sync fromstart
 
-highlight default link fennelAuxSyntax                 Macro
-highlight default link fennelBitwise                   Operator
+highlight default link fennelBitwise                   Function
 highlight default link fennelBoolean                   Boolean
 highlight default link fennelCaptureRemaining          Macro
 highlight default link fennelCharacter                 Character
 highlight default link fennelComment                   Comment
 highlight default link fennelCommentTodo               Todo
 highlight default link fennelComparator                Operator
-highlight default link fennelConcat                    Operator
+highlight default link fennelComparatorWord            Function
+highlight default link fennelConcat                    Structure
 highlight default link fennelCond                      Conditional
 highlight default link fennelConstant                  Boolean
 highlight default link fennelDefMonoForm               Delimiter
-highlight default link fennelDefPolyForm               Keyword
+highlight default link fennelDefPolyForm               Statement
+highlight default link fennelDefPolyFormVoid           Statement
 highlight default link fennelDoc                       Delimiter
 highlight default link fennelDummyVariable             Comment
 highlight default link fennelError                     Error
@@ -382,8 +397,11 @@ highlight default link fennelEscapeCharMnemonic        SpecialChar
 highlight default link fennelEscapeCharMnemonicZ       Comment
 highlight default link fennelException                 Exception
 highlight default link fennelFunction                  Statement
+highlight default link fennelGuardOrMarker             Macro
+highlight default link fennelHashFnArg                 Identifier
 highlight default link fennelKeyword                   String
 highlight default link fennelKeywordDelimiter          Structure
+highlight default link fennelLength                    Operator
 highlight default link fennelLuaCompile                Statement
 highlight default link fennelLuaGlobal                 Constant
 highlight default link fennelLuaKeyword                Function
@@ -391,17 +409,26 @@ highlight default link fennelMagic                     Special
 highlight default link fennelMath                      Operator
 highlight default link fennelNumber                    Number
 highlight default link fennelParen                     Delimiter
+highlight default link fennelPunningLookup             Structure
 highlight default link fennelQuote                     SpecialChar
 highlight default link fennelRepeat                    Repeat
 highlight default link fennelShebang                   Comment
 highlight default link fennelSpecial                   Macro
 highlight default link fennelString                    String
-highlight default link fennelStringDelimiter           StorageClass
+highlight default link fennelStringDelimiter           Delimiter
 highlight default link fennelSymbolOp                  Type
 highlight default link fennelUnquote                   SpecialChar
 highlight default link fennelVariable                  Identifier
 highlight default link fennelVariadic                  Delimiter
 highlight default link fennelVeryMagic                 PreProc
+
+if exists('g:fennel_highlight_conjure')
+  call s:syntax_keyword(s:fennel_conjure_syntax_keywords)
+  syntax cluster fennelTop add=fennelConjureKeyword
+  highlight default link fennelConjureKeyword          Keyword
+endif
+
+delfunction s:syntax_keyword
 
 let b:current_syntax = "fennel"
 
