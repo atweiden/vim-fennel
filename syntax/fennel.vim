@@ -307,9 +307,6 @@ syntax match fennelAuxSyntax /\<?\ze\([^[:space:]\n"'(),;@\[\]\\`{}~]\|\>\)/ con
 syntax match fennelQuote "'"
 syntax match fennelQuote "`"
 syntax match fennelUnquote ","
-syntax match fennelMeta "\^"
-syntax match fennelDeref "@"
-syntax match fennelDispatch "\v#[\^'=<_]?"
 
 syntax region fennelComment start=/;/ end=/$/ contains=fennelCommentTodo,@Spell
 syntax match fennelCommentTodo /\(FIXME\|NOTE\|TBD\|TODO\|XXX\):\?/ contained
@@ -330,8 +327,6 @@ syntax cluster fennelTop add=fennelCond
 syntax cluster fennelTop add=fennelConstant
 syntax cluster fennelTop add=fennelDefMonoForm
 syntax cluster fennelTop add=fennelDefPolyForm
-syntax cluster fennelTop add=fennelDeref
-syntax cluster fennelTop add=fennelDispatch
 syntax cluster fennelTop add=fennelDoc
 syntax cluster fennelTop add=fennelDummyVariable
 syntax cluster fennelTop add=fennelError
@@ -344,7 +339,6 @@ syntax cluster fennelTop add=fennelLuaKeyword
 syntax cluster fennelTop add=fennelMagic
 syntax cluster fennelTop add=fennelMap
 syntax cluster fennelTop add=fennelMath
-syntax cluster fennelTop add=fennelMeta
 syntax cluster fennelTop add=fennelNumber
 syntax cluster fennelTop add=fennelQuote
 syntax cluster fennelTop add=fennelRepeat
@@ -381,8 +375,6 @@ highlight default link fennelCond                      Conditional
 highlight default link fennelConstant                  Boolean
 highlight default link fennelDefMonoForm               Delimiter
 highlight default link fennelDefPolyForm               Keyword
-highlight default link fennelDeref                     SpecialChar
-highlight default link fennelDispatch                  SpecialChar
 highlight default link fennelDoc                       Delimiter
 highlight default link fennelDummyVariable             Comment
 highlight default link fennelError                     Error
@@ -399,7 +391,6 @@ highlight default link fennelLuaGlobal                 Constant
 highlight default link fennelLuaKeyword                Function
 highlight default link fennelMagic                     Special
 highlight default link fennelMath                      Operator
-highlight default link fennelMeta                      SpecialChar
 highlight default link fennelNumber                    Number
 highlight default link fennelParen                     Delimiter
 highlight default link fennelQuote                     SpecialChar
