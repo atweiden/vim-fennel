@@ -8,6 +8,31 @@ Screenshot
 
 ![](https://i.imgur.com/iIIeVdL.png)
 
+Features
+--------
+
+### Syntax highlighting for third party libraries
+
+- [Olical/conjure][Olical/conjure]
+- [rxi/lume][rxi/lume]
+
+### Syntax highlighting for doc comments
+
+Inspired by Vimscript:
+
+![](https://i.imgur.com/GIg1swb.png)
+
+```fennel
+;; Neovim syntax file "for great good"
+;; Language: Fennel
+;; Maintainer: Andy Weidenbaum <atweiden@tutanota.de>
+;; Last Change: 2020-07-14T08:19:28+10:00
+;; Version: 0.0.1
+;; URL: https://fennel-lang.org/
+```
+
+Doc comments are comments with leading double semicolon.
+
 Config
 ------
 
@@ -54,3 +79,5 @@ License
 
 [LICENSE]: LICENSE
 [Fennel]: https://fennel-lang.org/
+[Olical/conjure]: https://github.com/Olical/conjure
+[rxi/lume]: https://github.com/rxi/lume
