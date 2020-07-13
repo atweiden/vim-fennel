@@ -378,7 +378,7 @@ highlight default link fennelBoolean                   Boolean
 highlight default link fennelCaptureRemaining          Macro
 highlight default link fennelCharacter                 Character
 highlight default link fennelComment                   Comment
-highlight default link fennelCommentTodo               PreProc
+highlight default link fennelCommentTodo               Todo
 highlight default link fennelComparator                Operator
 highlight default link fennelConcat                    Operator
 highlight default link fennelCond                      Conditional
