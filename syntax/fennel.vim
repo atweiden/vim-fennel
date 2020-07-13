@@ -387,6 +387,10 @@ highlight default link fennelDispatch                  SpecialChar
 highlight default link fennelDoc                       Delimiter
 highlight default link fennelDummyVariable             Comment
 highlight default link fennelError                     Error
+highlight default link fennelEscapeCharCode            Character
+highlight default link fennelEscapeCharLiteral         SpecialChar
+highlight default link fennelEscapeCharMnemonic        SpecialChar
+highlight default link fennelEscapeCharMnemonicZ       Comment
 highlight default link fennelException                 Exception
 highlight default link fennelFunction                  Statement
 highlight default link fennelKeyword                   String
@@ -409,10 +413,6 @@ highlight default link fennelUnquote                   SpecialChar
 highlight default link fennelVariable                  Identifier
 highlight default link fennelVariadic                  Delimiter
 highlight default link fennelVeryMagic                 PreProc
-highlight default link fennelEscapeCharCode            Character
-highlight default link fennelEscapeCharLiteral         SpecialChar
-highlight default link fennelEscapeCharMnemonic        SpecialChar
-highlight default link fennelEscapeCharMnemonicZ       Comment
 
 let b:current_syntax = "fennel"
 
