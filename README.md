@@ -6,7 +6,7 @@ vim-fennel
 Screenshot
 ----------
 
-![](https://i.imgur.com/24PEZyW.png)
+![](https://i.imgur.com/iIIeVdL.png)
 
 License
 -------
