@@ -346,8 +346,12 @@ syntax match fennelSymbol /[^#:0-9[:space:]\n"'(),;@\[\]\\`{}~][^[:space:]\n"'()
 syntax match fennelKeywordLabel /:[^[:space:]\n"'(),;@\[\]\\`{}~]\+/ contained containedin=fennelKeyword
 syntax region fennelKeyword matchgroup=fennelKeywordDelimiter start=/\v<:/ end=/\v\ze[[:space:]\n"'(),;@\[\]\\`{}~]+/ contains=fennelKeywordLabel display
 
-syntax region fennelComment start=/;/ end=/$/ contains=fennelCommentTodo,@Spell
 syntax match fennelCommentTodo /\(FIXME\|NOTE\|TBD\|TODO\|XXX\):\?/ contained
+syntax match fennelCommentTitleLeader ';\s\+'ms=s+1 contained
+syntax match fennelCommentTitle ';\s*\u\w*\(\s\+\u\w*\)*:'hs=s+1 contained contains=fennelCommentTitleLeader,fennelCommentTodo,@Spell
+syntax region fennelCommentString start='\s\+"'ms=e end='"' contained oneline
+syntax region fennelComment excludenl start=/;/ end=/$/ contains=fennelCommentString,fennelCommentTodo,@Spell
+syntax match fennelCommentLine +^[ \t]*;.*$+ contains=fennelCommentString,fennelCommentTitle,fennelCommentTodo,@Spell
 syntax match fennelShebang /\%^#![\/ ].*$/
 
 syntax region fennelString matchgroup=fennelStringDelimiter start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=@fennelEscapeChars,@Spell
@@ -390,6 +394,7 @@ syntax cluster fennelTop add=fennelBoolean
 syntax cluster fennelTop add=fennelCaptureRemaining
 syntax cluster fennelTop add=fennelCharacter
 syntax cluster fennelTop add=fennelComment
+syntax cluster fennelTop add=fennelCommentLine
 syntax cluster fennelTop add=fennelComparator
 syntax cluster fennelTop add=fennelComparatorWord
 syntax cluster fennelTop add=fennelConcat
@@ -442,6 +447,9 @@ highlight default link fennelBoolean                   Boolean
 highlight default link fennelCaptureRemaining          Macro
 highlight default link fennelCharacter                 Character
 highlight default link fennelComment                   Comment
+highlight default link fennelCommentLine               Comment
+highlight default link fennelCommentString             String
+highlight default link fennelCommentTitle              PreProc
 highlight default link fennelCommentTodo               Todo
 highlight default link fennelComparator                Operator
 highlight default link fennelComparatorWord            Function

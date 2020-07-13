@@ -90,6 +90,7 @@ CREDITS                                                       *fennel-credits*
   * Raku/vim-raku
   * fatih/vim-go
   * elixir-editors/vim-elixir
+  * Charles E. Campbell: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_VIM
 
 
  vim: ft=help tw=78 et ts=2 sw=2 sts=2 norl
