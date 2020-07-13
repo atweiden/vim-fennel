@@ -38,6 +38,12 @@ Plug 'atweiden/vim-fennel'
 
 " vundle
 Plugin 'atweiden/vim-fennel'
+
+" dein.vim
+call dein#add('atweiden/vim-fennel')
+
+" minpac
+call minpac#add('atweiden/vim-fennel')
 ```
 
 License
