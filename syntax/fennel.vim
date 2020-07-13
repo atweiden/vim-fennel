@@ -275,8 +275,6 @@ syntax match fennelKeywordLabel "\v<:{1,2}%([^ \n\r\t()\[\]{}";@^`~\\%/]+/)*[^ \
 
 syntax region fennelKeyword matchgroup=fennelKeywordDelimiter start=/\v<:/ end="\v\ze[ \n\r\t()[\]{}";@`~]+" contains=fennelKeywordLabel display
 
-syntax match fennelStringEscape "\v\\%([\\btnfrz"]|u\x{4}|[0-3]\o{2}|\o{1,2})" contained
-
 syntax region fennelString matchgroup=fennelStringDelimiter start=/"/ skip=/\\\\\|\\"/ end=/"/ contains=@fennelEscapeChars,@Spell
 syntax cluster fennelEscapeChars contains=fennelEscapeCharCode
 syntax cluster fennelEscapeChars add=fennelEscapeCharLiteral
@@ -406,7 +404,6 @@ highlight default link fennelRepeat                    Repeat
 highlight default link fennelSpecial                   Macro
 highlight default link fennelString                    String
 highlight default link fennelStringDelimiter           StorageClass
-highlight default link fennelStringEscape              Character
 highlight default link fennelSymbolOp                  Type
 highlight default link fennelUnquote                   SpecialChar
 highlight default link fennelVariable                  Identifier
