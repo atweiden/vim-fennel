@@ -257,6 +257,69 @@ let s:fennel_conjure_syntax_keywords = {
     \ ,                          "module"]
     \ }
 
+let s:fennel_lume_syntax_keywords = {
+    \   'fennelLumeKeyword': ["lume"
+    \ ,                       "lume.all"
+    \ ,                       "lume.angle"
+    \ ,                       "lume.any"
+    \ ,                       "lume.array"
+    \ ,                       "lume.call"
+    \ ,                       "lume.chain"
+    \ ,                       "lume.clamp"
+    \ ,                       "lume.clear"
+    \ ,                       "lume.clone"
+    \ ,                       "lume.color"
+    \ ,                       "lume.combine"
+    \ ,                       "lume.concat"
+    \ ,                       "lume.count"
+    \ ,                       "lume.deserialize"
+    \ ,                       "lume.distance"
+    \ ,                       "lume.dostring"
+    \ ,                       "lume.each"
+    \ ,                       "lume.extend"
+    \ ,                       "lume.filter"
+    \ ,                       "lume.find"
+    \ ,                       "lume.first"
+    \ ,                       "lume.fn"
+    \ ,                       "lume.format"
+    \ ,                       "lume.hotswap"
+    \ ,                       "lume.invert"
+    \ ,                       "lume.isarray"
+    \ ,                       "lume.keys"
+    \ ,                       "lume.lambda"
+    \ ,                       "lume.last"
+    \ ,                       "lume.lerp"
+    \ ,                       "lume.map"
+    \ ,                       "lume.match"
+    \ ,                       "lume.memoize"
+    \ ,                       "lume.merge"
+    \ ,                       "lume.once"
+    \ ,                       "lume.pingpong"
+    \ ,                       "lume.push"
+    \ ,                       "lume.random"
+    \ ,                       "lume.randomchoice"
+    \ ,                       "lume.reduce"
+    \ ,                       "lume.reject"
+    \ ,                       "lume.remove"
+    \ ,                       "lume.ripairs"
+    \ ,                       "lume.round"
+    \ ,                       "lume.serialize"
+    \ ,                       "lume.shuffle"
+    \ ,                       "lume.sign"
+    \ ,                       "lume.slice"
+    \ ,                       "lume.smooth"
+    \ ,                       "lume.sort"
+    \ ,                       "lume.split"
+    \ ,                       "lume.time"
+    \ ,                       "lume.trace"
+    \ ,                       "lume.trim"
+    \ ,                       "lume.unique"
+    \ ,                       "lume.uuid"
+    \ ,                       "lume.vector"
+    \ ,                       "lume.weightedchoice"
+    \ ,                       "lume.wordwrap"]
+    \ }
+
 function! s:syntax_keyword(dict)
   for key in keys(a:dict)
     execute 'syntax keyword' key join(a:dict[key], ' ')
@@ -426,6 +489,12 @@ if exists('g:fennel_highlight_conjure')
   call s:syntax_keyword(s:fennel_conjure_syntax_keywords)
   syntax cluster fennelTop add=fennelConjureKeyword
   highlight default link fennelConjureKeyword          Keyword
+endif
+
+if exists('g:fennel_highlight_lume')
+  call s:syntax_keyword(s:fennel_lume_syntax_keywords)
+  syntax cluster fennelTop add=fennelLumeKeyword
+  highlight default link fennelLumeKeyword             Function
 endif
 
 delfunction s:syntax_keyword
