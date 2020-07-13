@@ -265,12 +265,13 @@ endif
 unlet! s:key
 delfunction s:syntax_keyword
 
-" Keywords are symbols:
-"   static Pattern symbolPat = Pattern.compile("[:]?([\\D&&[^/]].*/)?([\\D&&[^/]][^/]*)");
-" But they:
-"   * Must not end in a : or /
-"   * Must not have two adjacent colons except at the beginning
-"   * Must not contain any reader metacharacters except for ' and #
+" <identifier> -> <initial> <subsequent> *
+" where <initial>    -> [^#:0-9[:space:]\n"'(),;@\[\]\\`{}~]
+"       <subsequent> -> [^[:space:]\n"'(),;@\[\]\\`{}~]
+syntax match fennelSymbol /[^#:0-9[:space:]\n"'(),;@\[\]\\`{}~][^[:space:]\n"'(),;@\[\]\\`{}~]*/
+
+" <keyword> -> : <subsequent> +
+" fennel accepts keywords such as :::
 syntax match fennelKeywordLabel /:[^[:space:]\n"'(),;@\[\]\\`{}~]\+/ contained containedin=fennelKeyword
 syntax region fennelKeyword matchgroup=fennelKeywordDelimiter start=/\v<:/ end=/\v\ze[[:space:]\n"'(),;@\[\]\\`{}~]+/ contains=fennelKeywordLabel display
 
@@ -284,8 +285,6 @@ syntax match fennelEscapeCharCode '\\x[[:xdigit:]]\{2}' contained
 syntax match fennelEscapeCharLiteral /\\[\\"']/ contained
 syntax match fennelEscapeCharMnemonic /\\[abfnrtv]/ contained
 syntax match fennelEscapeCharMnemonicZ /\\z/ contained
-
-syntax match fennelSymbol /[^#:0-9[:space:]\n"'(),;@\[\]\\`{}~][^[:space:]\n"'(),;@\[\]\\`{}~]*/
 
 let s:radix_chars = "0123456789abcdefghijklmnopqrstuvwxyz"
 for s:radix in range(2, 36)
