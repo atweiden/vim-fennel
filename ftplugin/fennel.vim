@@ -5,10 +5,6 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
-" There will be false positives, but this is better than missing the whole set
-" of user-defined def* definitions.
-setlocal define=\\v[(/]def(ault)@!\\S*
-
 " Lisp comments are routinely nested (e.g. ;;; SECTION HEADING)
 setlocal comments=n:;
 setlocal commentstring=;\ %s
@@ -47,7 +43,6 @@ setlocal lispwords+=λ
 let b:undo_ftplugin = 'setlocal'
 let b:undo_ftplugin += ' comments<'
 let b:undo_ftplugin += ' commentstring<'
-let b:undo_ftplugin += ' define<'
 let b:undo_ftplugin += ' formatoptions<'
 let b:undo_ftplugin += ' lispwords<'
 
