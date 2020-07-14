@@ -33,12 +33,24 @@ setlocal lispwords+=lambda,
 setlocal lispwords+=let,
 setlocal lispwords+=local,
 setlocal lispwords+=macro,
+setlocal lispwords+=macros,
 setlocal lispwords+=match,
 setlocal lispwords+=partial,
 setlocal lispwords+=var,
 setlocal lispwords+=when,
 setlocal lispwords+=while,
+setlocal lispwords+=with-open,
 setlocal lispwords+=λ
+
+if exists('g:fennel_highlight_conjure')
+  setlocal lispwords+=def
+  setlocal lispwords+=def-
+  setlocal lispwords+=defn
+  setlocal lispwords+=defn-
+  setlocal lispwords+=defonce
+  setlocal lispwords+=defonce-
+  setlocal lispwords+=deftest
+endif
 
 let b:undo_ftplugin = 'setlocal'
 let b:undo_ftplugin += ' comments<'
