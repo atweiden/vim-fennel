@@ -6,6 +6,26 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 syntax iskeyword @,33,35-38,42-43,45-58,60-63,94-95,124,126
+" 32: SPACE
+" 34: "
+" 39: '
+" 40,41: ()
+" 44: ,
+" 58: :
+" NOTE: `:` is not permitted in identifiers but...
+"   1. required to highlight special form `:`,
+"   2. required to highlight method call `(obj:method ...)`, and
+"   3. convenient when for example searching a keyword by `*`.
+" 59: ;
+" 64: @
+" 65-90: A-Z (included in @)
+" 91,93: []
+" 92: \
+" 96: `
+" 97-122: a-z (included in @)
+" 123,125: {}
+" 126: ~
+" 127: DEL
 
 " -*- KEYWORDS -*-
 let s:fennel_syntax_keywords = {
