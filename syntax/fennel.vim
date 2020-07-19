@@ -474,8 +474,6 @@ highlight default link fennelConcat                    Operator
 highlight default link fennelCond                      Conditional
 highlight default link fennelConstant                  Boolean
 highlight default link fennelDefMonoForm               Delimiter
-highlight default link fennelDefPolyForm               Statement
-highlight default link fennelDefPolyFormVoid           Statement
 highlight default link fennelDoc                       Delimiter
 highlight default link fennelDummyVariable             Comment
 highlight default link fennelError                     Error
@@ -510,13 +508,18 @@ highlight default link fennelUnquote                   SpecialChar
 highlight default link fennelVariadic                  Delimiter
 highlight default link fennelVeryMagic                 PreProc
 
-if exists('g:fennel_highlight_conjure')
+if fennel#config#HighlightConjure()
   call s:syntax_keyword(s:fennel_conjure_syntax_keywords)
   syntax cluster fennelTop add=fennelConjureKeyword
   highlight default link fennelConjureKeyword          Keyword
+  highlight default link fennelDefPolyForm             Statement
+  highlight default link fennelDefPolyFormVoid         Statement
+else
+  highlight default link fennelDefPolyForm             Keyword
+  highlight default link fennelDefPolyFormVoid         Keyword
 endif
 
-if exists('g:fennel_highlight_lume')
+if fennel#config#HighlightLume()
   call s:syntax_keyword(s:fennel_lume_syntax_keywords)
   syntax cluster fennelTop add=fennelLumeKeyword
   highlight default link fennelLumeKeyword             Function

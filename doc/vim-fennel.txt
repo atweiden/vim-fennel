@@ -64,7 +64,8 @@ SETTINGS                                                     *fennel-settings*
                                                 *'g:fennel_highlight_conjure'*
 
 Highlight macros defined in https://github.com/Olical/conjure as keywords
-(e.g. `module`, `defn`). By default it is disabled.
+(e.g. `module`, `defn`). Note this alters how `fn`, `let`, `lambda`
+and more are highlighted. By default it is disabled.
 >
   let g:fennel_highlight_conjure = 1
 <
