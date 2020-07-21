@@ -266,8 +266,8 @@ let s:fennel_syntax_keywords = {
     \ }
     " \ , 'fennelVariable': []
 
-let s:fennel_conjure_syntax_keywords = {
-    \   'fennelConjureKeyword': ["def"
+let s:fennel_aniseed_syntax_keywords = {
+    \   'fennelAniseedKeyword': ["def"
     \ ,                          "def-"
     \ ,                          "defn"
     \ ,                          "defn-"
@@ -508,10 +508,10 @@ highlight default link fennelUnquote                   SpecialChar
 highlight default link fennelVariadic                  Delimiter
 highlight default link fennelVeryMagic                 PreProc
 
-if fennel#config#HighlightConjure()
-  call s:syntax_keyword(s:fennel_conjure_syntax_keywords)
-  syntax cluster fennelTop add=fennelConjureKeyword
-  highlight default link fennelConjureKeyword          Keyword
+if fennel#config#HighlightAniseed()
+  call s:syntax_keyword(s:fennel_aniseed_syntax_keywords)
+  syntax cluster fennelTop add=fennelAniseedKeyword
+  highlight default link fennelAniseedKeyword          Keyword
   highlight default link fennelDefPolyForm             Statement
   highlight default link fennelDefPolyFormVoid         Statement
 else

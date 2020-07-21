@@ -61,13 +61,13 @@ Standard installation:
 ==============================================================================
 SETTINGS                                                     *fennel-settings*
 
-                                                *'g:fennel_highlight_conjure'*
+                                                *'g:fennel_highlight_aniseed'*
 
-Highlight macros defined in https://github.com/Olical/conjure as keywords
+Highlight macros defined in https://github.com/Olical/aniseed as keywords
 (e.g. `module`, `defn`). Note this alters how `fn`, `let`, `lambda`
 and more are highlighted. By default it is disabled.
 >
-  let g:fennel_highlight_conjure = 1
+  let g:fennel_highlight_aniseed = 1
 <
 
                                                    *'g:fennel_highlight_lume'*

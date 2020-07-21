@@ -1,8 +1,8 @@
 let s:cpo_save = &cpo
 set cpo&vim
 
-function! fennel#config#HighlightConjure() abort
-  return get(g:, 'fennel_highlight_conjure', 0)
+function! fennel#config#HighlightAniseed() abort
+  return get(g:, 'fennel_highlight_aniseed', 0)
 endfunction
 
 function! fennel#config#HighlightLume() abort

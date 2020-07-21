@@ -13,7 +13,7 @@ Features
 
 ### Syntax highlighting for third party libraries
 
-- [Olical/conjure][Olical/conjure]
+- [Olical/aniseed][Olical/aniseed]
 - [rxi/lume][rxi/lume]
 
 ### Syntax highlighting for doc comments
@@ -37,8 +37,8 @@ Config
 ------
 
 ```vim
-" highlight Olical/conjure keywords
-let g:fennel_highlight_conjure = 1
+" highlight Olical/aniseed keywords
+let g:fennel_highlight_aniseed = 1
 
 " highlight rxi/lume keywords
 let g:fennel_highlight_lume = 1
@@ -79,5 +79,5 @@ License
 
 [LICENSE]: LICENSE
 [Fennel]: https://fennel-lang.org/
-[Olical/conjure]: https://github.com/Olical/conjure
+[Olical/aniseed]: https://github.com/Olical/aniseed
 [rxi/lume]: https://github.com/rxi/lume

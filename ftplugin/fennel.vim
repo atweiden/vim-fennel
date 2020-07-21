@@ -42,7 +42,7 @@ setlocal lispwords+=while,
 setlocal lispwords+=with-open,
 setlocal lispwords+=λ
 
-if exists('g:fennel_highlight_conjure')
+if fennel#config#HighlightAniseed()
   setlocal lispwords+=def
   setlocal lispwords+=def-
   setlocal lispwords+=defn
