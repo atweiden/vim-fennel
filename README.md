@@ -3,8 +3,10 @@ vim-fennel
 
 [Fennel][Fennel] syntax highlighting for Vim.
 
-Screenshot
-----------
+Screenshots
+-----------
+
+![](https://i.imgur.com/uqnpibr.png)
 
 ![](https://i.imgur.com/iIIeVdL.png)
 
