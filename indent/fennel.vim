@@ -17,11 +17,11 @@ let b:undo_indent += ' shiftwidth<'
 let b:undo_indent += ' smartindent<'
 let b:undo_indent += ' softtabstop<'
 
+setlocal autoindent
 setlocal expandtab
 setlocal indentexpr=
 setlocal indentkeys=o,O
 setlocal lisp
-setlocal noautoindent
 setlocal nosmartindent
 setlocal shiftwidth=2
 setlocal softtabstop=2
