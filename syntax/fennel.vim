@@ -109,15 +109,15 @@ let s:fennel_syntax_keywords = {
     \ ,                 "do"
     \ ,                 "doto"
     \ ,                 "next"]
-    \ , 'fennelVeryMagic': ["macrodebug"
-    \ ,                     "macroexpand"
+    \ , 'fennelVeryMagic': ["doc"
+    \ ,                     "eval-compiler"
     \ ,                     "include"
     \ ,                     "lua"
-    \ ,                     "eval-compiler"]
+    \ ,                     "macrodebug"
+    \ ,                     "macroexpand"]
     \ , 'fennelSymbolOp': ["gensym"
     \ ,                    "sym"]
-    \ , 'fennelDoc': ["comment"
-    \ ,               "doc"]
+    \ , 'fennelDoc': ["comment"]
     \ , 'fennelException': ["error"]
     \ , 'fennelLuaGlobal': ["_G"
     \ ,                     "_VERSION"
