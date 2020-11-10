@@ -5,6 +5,9 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
+" Search for Fennel files with 'gf', '[I', etc commands.
+setlocal suffixesadd=.fnl
+
 " Remove 't' from 'formatoptions' to avoid auto-wrapping code.
 setlocal formatoptions-=t
 
