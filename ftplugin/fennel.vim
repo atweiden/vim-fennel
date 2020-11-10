@@ -5,6 +5,9 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
+" Remove 't' from 'formatoptions' to avoid auto-wrapping code.
+setlocal formatoptions-=t
+
 " Lisp comments are routinely nested (e.g. ;;; SECTION HEADING)
 setlocal comments=n:;
 setlocal commentstring=;\ %s
