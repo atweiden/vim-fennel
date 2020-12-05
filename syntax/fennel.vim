@@ -119,6 +119,7 @@ let s:fennel_syntax_keywords = {
     \ ,                    "sym"]
     \ , 'fennelDoc': ["comment"]
     \ , 'fennelException': ["error"]
+    \ , 'fennelGlobal': ["fennel.path"]
     \ , 'fennelLuaGlobal': ["_G"
     \ ,                     "_VERSION"
     \ ,                     "package"
@@ -432,6 +433,7 @@ syntax cluster fennelTop add=fennelDummyVariable
 syntax cluster fennelTop add=fennelError
 syntax cluster fennelTop add=fennelException
 syntax cluster fennelTop add=fennelFunction
+syntax cluster fennelTop add=fennelGlobal
 syntax cluster fennelTop add=fennelGuardOrMarker
 syntax cluster fennelTop add=fennelHashFnArg
 syntax cluster fennelTop add=fennelKeyword
@@ -488,6 +490,7 @@ highlight default link fennelHashFnArg                 Identifier
 highlight default link fennelKeyword                   String
 highlight default link fennelKeywordDelimiter          Structure
 highlight default link fennelLength                    Operator
+highlight default link fennelGlobal                    Constant
 highlight default link fennelLuaCompile                Statement
 highlight default link fennelLuaGlobal                 Constant
 highlight default link fennelLuaKeyword                Function
