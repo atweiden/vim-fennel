@@ -107,6 +107,8 @@ let s:fennel_syntax_keywords = {
     \ ,                 "->>"
     \ ,                 "-?>"
     \ ,                 "-?>>"
+    \ ,                 "collect"
+    \ ,                 "icollect"
     \ ,                 "do"
     \ ,                 "doto"
     \ ,                 "next"]
