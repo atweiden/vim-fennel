@@ -526,7 +526,7 @@ if fennel#config#HighlightCompiler()
   syntax cluster fennelTop add=fennelCompilerType
   syntax cluster fennelTop add=fennelCompilerVeryMagic
   syntax cluster fennelTop add=fennelMacrosVeryMagic
-  highlight default link fennelCompilerFunction        Function
+  highlight default link fennelCompilerFunction        fennelFunction
   highlight default link fennelCompilerType            Type
   highlight default link fennelCompilerVeryMagic       fennelVeryMagic
   highlight default link fennelMacrosVeryMagic         fennelVeryMagic
