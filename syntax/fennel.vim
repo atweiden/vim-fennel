@@ -108,10 +108,7 @@ let s:fennel_syntax_keywords = {
     \ ,                     "eval-compiler"
     \ ,                     "include"
     \ ,                     "lua"
-    \ ,                     "macrodebug"
-    \ ,                     "macroexpand"]
-    \ , 'fennelSymbolOp': ["gensym"
-    \ ,                    "sym"]
+    \ ,                     "macrodebug"]
     \ , 'fennelDoc': ["comment"]
     \ , 'fennelException': ["error"]
     \ , 'fennelGlobal': ["fennel.path"]
@@ -260,7 +257,26 @@ let s:fennel_syntax_keywords = {
     \ ,                      "utf8.offset"
     \ ,                      "xpcall"]
     \ }
-    " \ , 'fennelVariable': []
+
+" syntax keywords available in fennel compiler environment or macros only
+let s:fennel_compiler_syntax_keywords = {
+    \   'fennelCompilerType': ["gensym"
+    \ ,                        "list"
+    \ ,                        "sequence"
+    \ ,                        "sym"
+    \ ,                        "varg"]
+    \ , 'fennelCompilerVeryMagic': ["comment?"
+    \ ,                             "list?"
+    \ ,                             "multi-sym?"
+    \ ,                             "sequence?"
+    \ ,                             "sym?"
+    \ ,                             "sym-char?"
+    \ ,                             "table?"
+    \ ,                             "varg?"
+    \ ,                             "view"]
+    \ , 'fennelMacrosVeryMagic': ["in-scope?"
+    \ ,                           "macroexpand"]
+    \ }
 
 let s:fennel_aniseed_syntax_keywords = {
     \   'fennelAniseedKeyword': ["def"
@@ -449,9 +465,7 @@ syntax cluster fennelTop add=fennelShebang
 syntax cluster fennelTop add=fennelSpecial
 syntax cluster fennelTop add=fennelString
 syntax cluster fennelTop add=fennelSymbol
-syntax cluster fennelTop add=fennelSymbolOp
 syntax cluster fennelTop add=fennelUnquote
-"syntax cluster fennelTop add=fennelVariable
 syntax cluster fennelTop add=fennelVariadic
 syntax cluster fennelTop add=fennelVector
 syntax cluster fennelTop add=fennelVeryMagic
@@ -502,11 +516,19 @@ highlight default link fennelShebang                   Comment
 highlight default link fennelSpecial                   Macro
 highlight default link fennelString                    String
 highlight default link fennelStringDelimiter           Delimiter
-highlight default link fennelSymbolOp                  Type
 highlight default link fennelUnquote                   SpecialChar
-"highlight default link fennelVariable                  Identifier
 highlight default link fennelVariadic                  Delimiter
 highlight default link fennelVeryMagic                 PreProc
+
+if fennel#config#HighlightCompiler()
+  call s:syntax_keyword(s:fennel_compiler_syntax_keywords)
+  syntax cluster fennelTop add=fennelCompilerType
+  syntax cluster fennelTop add=fennelCompilerVeryMagic
+  syntax cluster fennelTop add=fennelMacrosVeryMagic
+  highlight default link fennelCompilerType            Type
+  highlight default link fennelCompilerVeryMagic       fennelVeryMagic
+  highlight default link fennelMacrosVeryMagic         fennelVeryMagic
+endif
 
 if fennel#config#HighlightAniseed()
   call s:syntax_keyword(s:fennel_aniseed_syntax_keywords)

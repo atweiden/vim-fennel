@@ -39,6 +39,9 @@ Config
 ------
 
 ```vim
+" highlight Fennel compiler environment–only functions
+let g:fennel_highlight_compiler = 1
+
 " highlight Olical/aniseed keywords
 let g:fennel_highlight_aniseed = 1
 

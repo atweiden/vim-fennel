@@ -58,6 +58,15 @@ Standard installation:
 ==============================================================================
 SETTINGS                                                     *fennel-settings*
 
+                                               *'g:fennel_highlight_compiler'*
+
+Highlight Fennel functions only available inside `eval-compiler`,
+`macros` or `macro` blocks, or `import-macros` modules (e.g. `gensym`,
+`list?`, `macroexpand`). By default it is disabled.
+>
+  let g:fennel_highlight_compiler = 1
+<
+
                                                 *'g:fennel_highlight_aniseed'*
 
 Highlight macros defined in https://github.com/Olical/aniseed as keywords
