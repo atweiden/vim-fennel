@@ -260,7 +260,8 @@ let s:fennel_syntax_keywords = {
 
 " syntax keywords available in fennel compiler environment or macros only
 let s:fennel_compiler_syntax_keywords = {
-    \   'fennelCompilerType': ["gensym"
+    \   'fennelCompilerFunction': ["view"]
+    \ , 'fennelCompilerType': ["gensym"
     \ ,                        "list"
     \ ,                        "sequence"
     \ ,                        "sym"
@@ -272,8 +273,7 @@ let s:fennel_compiler_syntax_keywords = {
     \ ,                             "sym?"
     \ ,                             "sym-char?"
     \ ,                             "table?"
-    \ ,                             "varg?"
-    \ ,                             "view"]
+    \ ,                             "varg?"]
     \ , 'fennelMacrosVeryMagic': ["in-scope?"
     \ ,                           "macroexpand"]
     \ }
@@ -522,9 +522,11 @@ highlight default link fennelVeryMagic                 PreProc
 
 if fennel#config#HighlightCompiler()
   call s:syntax_keyword(s:fennel_compiler_syntax_keywords)
+  syntax cluster fennelTop add=fennelCompilerFunction
   syntax cluster fennelTop add=fennelCompilerType
   syntax cluster fennelTop add=fennelCompilerVeryMagic
   syntax cluster fennelTop add=fennelMacrosVeryMagic
+  highlight default link fennelCompilerFunction        Function
   highlight default link fennelCompilerType            Type
   highlight default link fennelCompilerVeryMagic       fennelVeryMagic
   highlight default link fennelMacrosVeryMagic         fennelVeryMagic
