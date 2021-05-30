@@ -289,6 +289,15 @@ let s:fennel_aniseed_syntax_keywords = {
     \ ,                          "module"]
     \ }
 
+let s:fennel_kiwi_syntax_keywords = {
+    \   'fennelKiwiKeyword': ["cite"
+    \ ,                       "dine"
+    \ ,                       "food"]
+    \ , 'fennelKiwiDefKeyword': ["appendix"
+    \ ,                          "diet"
+    \ ,                          "pantry"]
+    \ }
+
 let s:fennel_lume_syntax_keywords = {
     \   'fennelLumeKeyword': ["lume"
     \ ,                       "lume.all"
@@ -541,6 +550,14 @@ if fennel#config#HighlightAniseed()
 else
   highlight default link fennelDefPolyForm             Keyword
   highlight default link fennelDefPolyFormVoid         Keyword
+endif
+
+if fennel#config#HighlightKiwi()
+  call s:syntax_keyword(s:fennel_kiwi_syntax_keywords)
+  syntax cluster fennelTop add=fennelKiwiKeyword
+  syntax cluster fennelTop add=fennelKiwiDefKeyword
+  highlight default link fennelKiwiKeyword             Function
+  highlight default link fennelKiwiDefKeyword          PreProc
 endif
 
 if fennel#config#HighlightLume()

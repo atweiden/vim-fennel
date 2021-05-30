@@ -76,6 +76,14 @@ and more are highlighted. By default it is disabled.
   let g:fennel_highlight_aniseed = 1
 <
 
+                                                   *'g:fennel_highlight_kiwi'*
+
+Highlight macros defined in https://git.sr.ht/~ioiojo/kiwi as keywords
+(e.g. `pantry`, `diet`). By default it is disabled.
+>
+  let g:fennel_highlight_kiwi = 1
+<
+
                                                    *'g:fennel_highlight_lume'*
 
 Highlight functions exported in https://github.com/rxi/lume

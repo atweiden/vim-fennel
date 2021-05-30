@@ -16,6 +16,7 @@ Features
 ### Syntax highlighting for third party libraries
 
 - [Olical/aniseed][Olical/aniseed]
+- [~ioiojo/kiwi][~ioiojo/kiwi]
 - [rxi/lume][rxi/lume]
 
 ### Syntax highlighting for doc comments
@@ -44,6 +45,9 @@ let g:fennel_highlight_compiler = 1
 
 " highlight Olical/aniseed keywords
 let g:fennel_highlight_aniseed = 1
+
+" highlight ~ioiojo/kiwi keywords
+let g:fennel_highlight_kiwi = 1
 
 " highlight rxi/lume keywords
 let g:fennel_highlight_lume = 1
@@ -85,4 +89,5 @@ License
 [LICENSE]: LICENSE
 [Fennel]: https://fennel-lang.org/
 [Olical/aniseed]: https://github.com/Olical/aniseed
+[~ioiojo/kiwi]: https://git.sr.ht/~ioiojo/kiwi
 [rxi/lume]: https://github.com/rxi/lume
