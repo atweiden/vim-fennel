@@ -275,7 +275,8 @@ let s:fennel_compiler_syntax_keywords = {
     \ ,                             "sym-char?"
     \ ,                             "table?"
     \ ,                             "varg?"]
-    \ , 'fennelMacrosVeryMagic': ["in-scope?"
+    \ , 'fennelMacrosVeryMagic': ["assert-compile"
+    \ ,                           "in-scope?"
     \ ,                           "macroexpand"]
     \ }
 
