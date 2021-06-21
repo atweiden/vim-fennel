@@ -405,7 +405,7 @@ syntax match fennelEscapeCharCode /\\\%(\%(\%([01]\)\?[0-9]\)\?[0-9]\|2[0-4][0-9
 syntax match fennelEscapeCharCode '\\x[[:xdigit:]]\{2}' contained
 " Lua 5.3+
 syntax match fennelEscapeCharCode '\\u{[[:xdigit:]]\+}' contained
-syntax match fennelEscapeCharLiteral /\\[\\"']/ contained
+syntax match fennelEscapeCharLiteral /\\[\\"'\n]/ contained
 syntax match fennelEscapeCharMnemonic /\\[abfnrtv]/ contained
 syntax match fennelEscapeCharMnemonicZ /\\z/ contained
 
