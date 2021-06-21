@@ -103,7 +103,8 @@ let s:fennel_syntax_keywords = {
     \ ,                 "icollect"
     \ ,                 "do"
     \ ,                 "doto"
-    \ ,                 "next"]
+    \ ,                 "next"
+    \ ,                 "where"]
     \ , 'fennelVeryMagic': ["doc"
     \ ,                     "eval-compiler"
     \ ,                     "include"
