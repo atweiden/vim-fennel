@@ -28,24 +28,26 @@ setlocal commentstring=;\ %s
 " specially and hence are not indented specially.
 "
 " -*- LISPWORDS -*-
-setlocal lispwords=do,
-setlocal lispwords+=doto,
-setlocal lispwords+=each,
-setlocal lispwords+=fn,
-setlocal lispwords+=for,
-setlocal lispwords+=global,
-setlocal lispwords+=if,
-setlocal lispwords+=lambda,
-setlocal lispwords+=let,
-setlocal lispwords+=local,
-setlocal lispwords+=macro,
-setlocal lispwords+=macros,
-setlocal lispwords+=match,
-setlocal lispwords+=partial,
-setlocal lispwords+=var,
-setlocal lispwords+=when,
-setlocal lispwords+=while,
-setlocal lispwords+=with-open,
+setlocal lispwords=collect
+setlocal lispwords+=do
+setlocal lispwords+=doto
+setlocal lispwords+=each
+setlocal lispwords+=fn
+setlocal lispwords+=for
+setlocal lispwords+=global
+setlocal lispwords+=icollect
+setlocal lispwords+=if
+setlocal lispwords+=lambda
+setlocal lispwords+=let
+setlocal lispwords+=local
+setlocal lispwords+=macro
+setlocal lispwords+=macros
+setlocal lispwords+=match
+setlocal lispwords+=partial
+setlocal lispwords+=var
+setlocal lispwords+=when
+setlocal lispwords+=while
+setlocal lispwords+=with-open
 setlocal lispwords+=λ
 
 if fennel#config#HighlightAniseed()
