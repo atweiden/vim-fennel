@@ -401,7 +401,7 @@ syntax cluster fennelEscapeChars contains=fennelEscapeCharCode
 syntax cluster fennelEscapeChars add=fennelEscapeCharLiteral
 syntax cluster fennelEscapeChars add=fennelEscapeCharMnemonic
 syntax cluster fennelEscapeChars add=fennelEscapeCharMnemonicZ
-syntax match fennelEscapeCharCode /\\\%(\%(\%([01]\)\?[0-9]\)\?[0-9]\|2[0-4][0-9]\|25[0-5]\)/ contained
+syntax match fennelEscapeCharCode /\\\%(25[0-5]\|2[0-4][0-9]\|\%(\%([01]\)\?[0-9]\)\?[0-9]\)/ contained
 syntax match fennelEscapeCharCode '\\x[[:xdigit:]]\{2}' contained
 " Lua 5.3+
 syntax match fennelEscapeCharCode '\\u{[[:xdigit:]]\+}' contained
