@@ -28,7 +28,8 @@ setlocal commentstring=;\ %s
 " specially and hence are not indented specially.
 "
 " -*- LISPWORDS -*-
-setlocal lispwords=collect
+setlocal lispwords=accumulate
+setlocal lispwords+=collect
 setlocal lispwords+=do
 setlocal lispwords+=doto
 setlocal lispwords+=each

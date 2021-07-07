@@ -99,6 +99,7 @@ let s:fennel_syntax_keywords = {
     \ ,                 "->>"
     \ ,                 "-?>"
     \ ,                 "-?>>"
+    \ ,                 "accumulate"
     \ ,                 "collect"
     \ ,                 "icollect"
     \ ,                 "do"
