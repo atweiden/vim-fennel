@@ -112,7 +112,8 @@ let s:fennel_syntax_keywords = {
     \ ,                     "macrodebug"]
     \ , 'fennelDoc': ["comment"]
     \ , 'fennelException': ["error"]
-    \ , 'fennelGlobal': ["fennel.path"]
+    \ , 'fennelGlobal': ["fennel.macro-path"
+    \ ,                  "fennel.path"]
     \ , 'fennelLuaGlobal': ["_G"
     \ ,                     "_VERSION"
     \ ,                     "package"
