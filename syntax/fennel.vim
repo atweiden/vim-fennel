@@ -73,6 +73,7 @@ let s:fennel_syntax_keywords = {
     \ ,                           "let"
     \ ,                           "with-open"]
     \ , 'fennelFunction': ["."
+    \ ,                    "?."
     \ ,                    "set"
     \ ,                    "set-forcibly!"
     \ ,                    "tset"
