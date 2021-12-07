@@ -114,6 +114,7 @@ let s:fennel_syntax_keywords = {
     \ , 'fennelDoc': ["comment"]
     \ , 'fennelException': ["error"]
     \ , 'fennelGlobal': ["fennel.macro-path"
+    \ ,                  "fennel.macro-searchers"
     \ ,                  "fennel.path"]
     \ , 'fennelLuaGlobal': ["_G"
     \ ,                     "_VERSION"
