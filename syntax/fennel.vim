@@ -106,8 +106,7 @@ let s:fennel_syntax_keywords = {
     \ ,                 "doto"
     \ ,                 "next"
     \ ,                 "where"]
-    \ , 'fennelVeryMagic': ["doc"
-    \ ,                     "eval-compiler"
+    \ , 'fennelVeryMagic': ["eval-compiler"
     \ ,                     "include"
     \ ,                     "lua"
     \ ,                     "macrodebug"]
