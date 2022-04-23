@@ -58,6 +58,7 @@ let s:fennel_syntax_keywords = {
     \ ,                   "rshift"]
     \ , 'fennelCond': ["if"
     \ ,                "match"
+    \ ,                "match-try"
     \ ,                "when"]
     \ , 'fennelRepeat': ["each"
     \ ,                  "while"
@@ -102,6 +103,7 @@ let s:fennel_syntax_keywords = {
     \ ,                 "-?>>"
     \ ,                 "accumulate"
     \ ,                 "collect"
+    \ ,                 "fcollect"
     \ ,                 "icollect"
     \ ,                 "do"
     \ ,                 "doto"
