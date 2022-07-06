@@ -112,7 +112,9 @@ let s:fennel_syntax_keywords = {
     \ , 'fennelVeryMagic': ["eval-compiler"
     \ ,                     "include"
     \ ,                     "lua"
-    \ ,                     "macrodebug"]
+    \ ,                     "macrodebug"
+    \ ,                     "&into"
+    \ ,                     "&until"]
     \ , 'fennelDoc': ["comment"]
     \ , 'fennelException': ["error"]
     \ , 'fennelGlobal': ["fennel.macro-path"
