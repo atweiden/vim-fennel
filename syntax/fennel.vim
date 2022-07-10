@@ -86,7 +86,6 @@ let s:fennel_syntax_keywords = {
     \ , 'fennelDummyVariable': ["_"]
     \ , 'fennelVariadic': ["..."]
     \ , 'fennelCaptureRemaining': ["&"]
-    \ , 'fennelWholeTableDestructure': ["&as"]
     \ , 'fennelConcat': [".."]
     \ , 'fennelLength': ["#"]
     \ , 'fennelPunningLookup': [":"]
@@ -113,6 +112,7 @@ let s:fennel_syntax_keywords = {
     \ ,                     "include"
     \ ,                     "lua"
     \ ,                     "macrodebug"
+    \ ,                     "&as"
     \ ,                     "&into"
     \ ,                     "&until"]
     \ , 'fennelDoc': ["comment"]
@@ -449,7 +449,6 @@ syntax cluster fennelTop contains=@Spell
 syntax cluster fennelTop add=fennelBitwise
 syntax cluster fennelTop add=fennelBoolean
 syntax cluster fennelTop add=fennelCaptureRemaining
-syntax cluster fennelTop add=fennelWholeTableDestructure
 syntax cluster fennelTop add=fennelComment
 syntax cluster fennelTop add=fennelCommentDoc
 syntax cluster fennelTop add=fennelComparator
@@ -495,7 +494,6 @@ syntax sync fromstart
 highlight default link fennelBitwise                   Function
 highlight default link fennelBoolean                   Boolean
 highlight default link fennelCaptureRemaining          Macro
-highlight default link fennelWholeTableDestructure     Macro
 highlight default link fennelComment                   Comment
 highlight default link fennelCommentDoc                Comment
 highlight default link fennelCommentString             String
