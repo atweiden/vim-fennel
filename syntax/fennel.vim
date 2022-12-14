@@ -56,7 +56,9 @@ let s:fennel_syntax_keywords = {
     \ ,                   "bxor"
     \ ,                   "lshift"
     \ ,                   "rshift"]
-    \ , 'fennelCond': ["if"
+    \ , 'fennelCond': ["case"
+    \ ,                "case-try"
+    \ ,                "if"
     \ ,                "match"
     \ ,                "match-try"
     \ ,                "when"]
