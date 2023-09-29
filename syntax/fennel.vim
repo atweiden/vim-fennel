@@ -97,7 +97,8 @@ let s:fennel_syntax_keywords = {
     \ ,                   "partial"
     \ ,                   "hashfn"
     \ ,                   "pick-args"
-    \ ,                   "pick-values"]
+    \ ,                   "pick-values"
+    \ ,                   "tail!"]
     \ , 'fennelMagic': ["->"
     \ ,                 "->>"
     \ ,                 "-?>"
@@ -111,7 +112,8 @@ let s:fennel_syntax_keywords = {
     \ ,                 "doto"
     \ ,                 "next"
     \ ,                 "where"]
-    \ , 'fennelVeryMagic': ["eval-compiler"
+    \ , 'fennelVeryMagic': ["assert-repl"
+    \ ,                     "eval-compiler"
     \ ,                     "include"
     \ ,                     "lua"
     \ ,                     "macrodebug"
