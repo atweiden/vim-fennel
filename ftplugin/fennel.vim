@@ -29,10 +29,14 @@ setlocal commentstring=;\ %s
 "
 " -*- LISPWORDS -*-
 setlocal lispwords=accumulate
+setlocal lispwords+=case
+setlocal lispwords+=case-try
 setlocal lispwords+=collect
 setlocal lispwords+=do
 setlocal lispwords+=doto
 setlocal lispwords+=each
+setlocal lispwords+=faccumulate
+setlocal lispwords+=fcollect
 setlocal lispwords+=fn
 setlocal lispwords+=for
 setlocal lispwords+=global
@@ -44,6 +48,7 @@ setlocal lispwords+=local
 setlocal lispwords+=macro
 setlocal lispwords+=macros
 setlocal lispwords+=match
+setlocal lispwords+=match-try
 setlocal lispwords+=partial
 setlocal lispwords+=var
 setlocal lispwords+=when
