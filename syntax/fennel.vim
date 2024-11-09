@@ -113,6 +113,7 @@ let s:fennel_syntax_keywords = {
     \ ,                 "next"
     \ ,                 "where"]
     \ , 'fennelVeryMagic': ["assert-repl"
+    \ ,                     "catch"
     \ ,                     "eval-compiler"
     \ ,                     "include"
     \ ,                     "lua"
@@ -430,6 +431,7 @@ unlet! s:radix_chars s:radix
 syntax match fennelNumber "\v<[-+]?%(0\o*|0x\x+|[1-9]\d*)N?>"
 syntax match fennelNumber "\v<[-+]?%(0|[1-9]\d*|%(0|[1-9]\d*)\.\d*)%(M|[eE][-+]?\d+)?>"
 syntax match fennelNumber "\v<[-+]?%(0|[1-9]\d*)/%(0|[1-9]\d*)>"
+syntax match fennelNumber "\v-?\.(inf|nan)"
 
 syntax match fennelQuote "'"
 syntax match fennelQuote "`"
