@@ -1,4 +1,4 @@
-autocmd BufNewFile,BufRead *.fnl call s:set_fennel_filetype()
+autocmd BufNewFile,BufRead *.fnl,*.fnlm call s:set_fennel_filetype()
 
 function! s:set_fennel_filetype() abort
   if &filetype !=# 'fennel'
