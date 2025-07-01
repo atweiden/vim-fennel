@@ -66,15 +66,6 @@ if fennel#config#HighlightAniseed()
   setlocal lispwords+=deftest
 endif
 
-if fennel#config#HighlightKiwi()
-  setlocal lispwords+=appendix
-  setlocal lispwords+=cite
-  setlocal lispwords+=diet
-  setlocal lispwords+=dine
-  setlocal lispwords+=pantry
-  setlocal lispwords+=food
-endif
-
 let b:undo_ftplugin = 'setlocal'
 let b:undo_ftplugin += ' comments<'
 let b:undo_ftplugin += ' commentstring<'
