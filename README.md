@@ -76,6 +76,11 @@ call dein#add('atweiden/vim-fennel')
 call minpac#add('atweiden/vim-fennel')
 ```
 
+See Also
+--------
+
+- [~m15a/vim-fennel-syntax][~m15a/vim-fennel-syntax]
+
 License
 -------
 
@@ -86,3 +91,4 @@ License
 [Fennel]: https://fennel-lang.org/
 [Olical/aniseed]: https://github.com/Olical/aniseed
 [rxi/lume]: https://github.com/rxi/lume
+[~m15a/vim-fennel-syntax]: https://git.sr.ht/~m15a/vim-fennel-syntax
